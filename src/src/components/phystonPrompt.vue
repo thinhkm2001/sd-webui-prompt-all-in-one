@@ -856,15 +856,17 @@ export default {
             })
         },
         _setTagHeight(tag) {
-            let $tag = this.$refs['promptTagValue-' + tag.id][0]
-            let height = $tag.offsetHeight
-            $tag.parentNode.style.height = height + 'px'
-            if (this.$refs['promptTagEdit-' + tag.id]) {
-                this.$refs['promptTagEdit-' + tag.id][0].style.height = height + 'px'
-            }
-            if (this.$refs['promptTagDelete-' + tag.id]) {
-                this.$refs['promptTagDelete-' + tag.id][0].style.height = height + 'px'
-            }
+            setTimeout(() => {
+                let $tag = this.$refs['promptTagValue-' + tag.id][0]
+                let height = $tag.offsetHeight
+                $tag.parentNode.style.height = height + 'px'
+                if (this.$refs['promptTagEdit-' + tag.id]) {
+                    this.$refs['promptTagEdit-' + tag.id][0].style.height = height + 'px'
+                }
+                if (this.$refs['promptTagDelete-' + tag.id]) {
+                    this.$refs['promptTagDelete-' + tag.id][0].style.height = height + 'px'
+                }
+            }, 300)
         },
         _appendTag(value, localValue = '', disabled = false, index = -1, type = 'text') {
             // 唯一数：当前时间戳+随机数
