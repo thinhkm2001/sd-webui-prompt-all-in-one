@@ -274,6 +274,11 @@
                                             @click="onDecWeightClick(index, -1)">
                                         <icon-svg name="weight-brackets-dec"/>
                                     </button>
+                                    <button type="button"
+                                            v-tooltip="getLang('line_break_character')"
+                                            @click="onWrapTagClick(index)">
+                                        <icon-svg name="wrap"/>
+                                    </button>
                                     <button type="button" v-tooltip="getLang('translate_keyword_to_english')"
                                             v-show="!isEnglish"
                                             @click="onTranslateToEnglishClick(index)">
@@ -1439,6 +1444,15 @@ export default {
             if (localValue !== '') localValue = common.setLayers(localValue, decWeight, '[', ']')
             this.tags[index].value = value
             if (localValue !== '') this.tags[index].localValue = localValue
+            this.updateTags()
+        },
+        onWrapTagClick(index) {
+            let wrapIndex = this._appendTag("\n", "\n", false, -1, 'wrap')
+            let wrapTag = this.tags[wrapIndex]
+            // 移动到当前标签的下面
+            this.tags.splice(wrapIndex, 1);
+            // 然后将 'c' 插入到 'e' 后面
+            this.tags.splice(index + 1, 0, wrapTag);
             this.updateTags()
         },
         onTranslateToLocalClick(index) {
