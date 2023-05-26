@@ -408,6 +408,10 @@ export default {
             type: String,
             default: '',
         },
+        extraNetworks: {
+            type: Array,
+            default: () => [],
+        },
         loras: {
             type: Array,
             default: () => [],
@@ -775,7 +779,10 @@ export default {
                 if (match) {
                     tag.isLora = true
                     const loraName = this.loraExists(match[1])
-                    if (loraName !== false) tag.loraExists = true
+                    if (loraName !== false) {
+                        tag.loraExists = true
+                        tag.loraName = loraName
+                    }
                 }
 
                 if (!tag.isLora) {
@@ -784,7 +791,10 @@ export default {
                     if (match) {
                         tag.isLyco = true
                         const lycoName = this.lycoExists(match[1])
-                        if (lycoName !== false) tag.lycoExists = true
+                        if (lycoName !== false) {
+                            tag.lycoExists = true
+                            tag.lycoName = lycoName
+                        }
                     }
                 }
 
@@ -1568,9 +1578,25 @@ export default {
                     this._setTagById(tag.id, tag.value, tag.localValue)
                 }
 
+                let getTranslateText = (tag) => {
+                    if (tag.isLora && tag.loraExists) {
+                        return this.getExtraNetworkFullName(tag.loraName, 'lora')
+                    } else if (tag.isLyco && tag.lycoExists) {
+                        return this.getExtraNetworkFullName(tag.lycoName, 'lycoris')
+                    } else if (tag.isEmbedding) {
+                        return this.getExtraNetworkFullName(tag.value, 'textual inversion')
+                    }
+                    return tag.value
+                }
+
                 // 先过滤掉不需要翻译的标签
                 indexes.forEach(index => {
                     let tag = this.tags[index]
+                    let translateText = getTranslateText(tag)
+                    if (translateText !== tag.value) {
+                        tag.localValue = translateText
+                        return
+                    }
                     if (!common.canTranslate(tag.value)) {
                         // 不需要翻译
                         return
