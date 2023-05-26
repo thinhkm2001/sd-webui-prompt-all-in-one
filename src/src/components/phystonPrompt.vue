@@ -231,8 +231,8 @@
                                         <div v-show="!editing[tag.id]"
                                              :class="tag.classes"
                                              :ref="'promptTagValue-' + tag.id"
-                                             v-tooltip="getLang('click_to_edit') + '<br/>' + getLang('drop_to_order')"
-                                             @click="onTagClick(index)" v-html="renderTag(index)">
+                                             v-tooltip="getLang('click_to_edit') + '<br/>' + getLang('dblclick_to_disable') + '<br/>' + getLang('drop_to_order')"
+                                             @click="onTagClick(index, $event)" @dblclick="onTagDblclick(index)" v-html="renderTag(index)">
                                         </div>
                                         <textarea v-show="editing[tag.id]" type="text"
                                                   class="scroll-hide svelte-4xt1ch input-tag-edit"
@@ -467,6 +467,7 @@ export default {
             loading: {},
             editing: {},
             autocompleteResults: null,
+            tagClickTimeId: 0,
         }
     },
     computed: {
@@ -1296,15 +1297,23 @@ export default {
             return false
         },
         onTagClick(index) {
-            this.editing = {}
-            this.editing[this.tags[index].id] = true
-            this.$forceUpdate()
-            this.$nextTick(() => {
-                const input = this.$refs['promptTagEdit-' + this.tags[index].id][0]
-                input.focus()
-                input.dispatchEvent(new Event('input'))
-                // input.select()
-            })
+            if (this.tagClickTimeId) clearTimeout(this.tagClickTimeId)
+            this.tagClickTimeId = setTimeout(() => {
+                this.editing = {}
+                this.editing[this.tags[index].id] = true
+                this.$forceUpdate()
+                this.$nextTick(() => {
+                    const input = this.$refs['promptTagEdit-' + this.tags[index].id][0]
+                    input.focus()
+                    input.dispatchEvent(new Event('input'))
+                    // input.select()
+                })
+                clearTimeout(this.tagClickTimeId)
+            }, 250)
+        },
+        onTagDblclick(index) {
+            clearTimeout(this.tagClickTimeId)
+            this.onDisabledTagClick(index)
         },
         onTagInputBlur(index) {
             this.editing[this.tags[index].id] = false
