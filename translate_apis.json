@@ -356,18 +356,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -470,18 +458,6 @@
                         {
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
-                        }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
                         }
                     ]
                 },
@@ -589,18 +565,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -674,18 +638,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -726,18 +678,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -774,18 +714,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -819,18 +747,6 @@
                         {
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
-                        }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
                         }
                     ]
                 },
@@ -878,18 +794,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -922,18 +826,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -957,18 +849,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -991,18 +871,6 @@
                         {
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
-                        }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
                         }
                     ]
                 },
@@ -1116,18 +984,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -1240,18 +1096,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -1292,18 +1136,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -1342,18 +1174,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -1374,18 +1194,6 @@
                         {
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
-                        }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
                         }
                     ]
                 },
@@ -1501,18 +1309,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -1553,18 +1349,6 @@
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
                         }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
-                        }
                     ]
                 },
                 {
@@ -1588,18 +1372,6 @@
                         {
                             "title": "[github]translators",
                             "url": "https://github.com/UlionTse/translators"
-                        }
-                    ],
-                    "config": [
-                        {
-                            "key": "region",
-                            "title": "Region",
-                            "type": "select",
-                            "default": "EN",
-                            "options": [
-                                "China",
-                                "EN"
-                            ]
                         }
                     ]
                 }
