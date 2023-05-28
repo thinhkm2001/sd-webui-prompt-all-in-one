@@ -1341,6 +1341,153 @@
     }
 }
 
+.physton-packages-state {
+    .common-popup-bg();
+    z-index: 1999;
+
+    .state-main {
+        min-height: 300px;
+        position: relative;
+
+        .state-close {
+            .common-popup-close();
+        }
+
+        .state-body {
+            display: block;
+            position: relative;
+            box-shadow: 0 0 3px @common-blue;
+            border-radius: 6px 6px 4px 4px;
+            background-color: #1e1e1ee6;
+            transition: height .1s ease-in-out, width .1s ease-in-out;
+            padding: 20px;
+            font-size: 14px;
+            color: #fff;
+
+            .today-now-show {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+
+                label {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    color: #ff1d00;
+                }
+
+                input[type='checkbox'] {
+                    margin-right: 5px;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            .state-body-name {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .state-body-language {
+                color: #374151;
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                padding: 5px 0;
+                line-height: 20px;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                display: flex;
+                width: 235px;
+                cursor: pointer;
+
+                &:hover {
+                    background: #dcdcdc;
+                    border-color: #d81e06;
+                }
+
+                .set-icon-svg(20px, 20px, #d81e06, icon-svg-i18n);
+
+                .icon-svg-i18n {
+                    margin: 0 10px;
+                }
+            }
+
+            .state-body-desc {
+                color: #00e6ff;
+                font-size: 16px;
+                white-space: break-spaces;
+                word-break: break-all;
+            }
+
+            .package-list {
+                margin-top: 10px;
+                border: 1px solid #545454;
+                padding: 10px;
+
+                .package-item {
+                    padding: 5px 0;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    .package-name {
+                        width: 150px;
+                    }
+
+                    .package-state {
+                        width: 150px;
+
+                        &.installed {
+
+                        }
+
+                        &.not_install {
+                            color: #ff1d00;
+                        }
+                    }
+
+                    .package-command {
+                        white-space: nowrap;
+                    }
+                }
+            }
+
+            .btn-packages-install {
+                cursor: pointer;
+                display: inline-block;
+                padding: 0 40px;
+                height: 40px;
+                line-height: 40px;
+                color: #fff;
+                .common-colourful-background();
+                border-radius: 4px;
+                margin-top: 10px;
+
+                .set-icon-svg(40px, 40px, none, icon-svg-loading);
+            }
+
+            .install-result {
+                margin-top: 10px;
+                border: 1px solid #545454;
+                padding: 10px;
+
+                .result-content {
+                    margin-top: 5px;
+                    white-space: pre;
+                    color: #00e6ff;
+                    line-height: 20px;
+                    overflow: hidden;
+                    overflow-y: auto;
+                    border: 1px solid #003c43;
+                    padding: 5px;
+                    max-height: 200px;
+                }
+            }
+        }
+    }
+}
+
 .physton-prompt-translate-setting {
     .common-popup-bg();
 

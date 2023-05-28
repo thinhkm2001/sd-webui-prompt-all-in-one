@@ -1358,7 +1358,7 @@
             "children": [
                 {
                     "key": "google",
-                    "name": "Google",
+                    "name": "[ApiKey] Google",
                     "concurrent": 10,
                     "support": {
                         "zh_CN": "zh-CN",
@@ -1646,7 +1646,7 @@
                 },
                 {
                     "key": "microsoft",
-                    "name": "Microsoft",
+                    "name": "[ApiKey] Microsoft",
                     "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-Hans",
@@ -1789,7 +1789,7 @@
                 },
                 {
                     "key": "amazon",
-                    "name": "Amazon",
+                    "name": "[ApiKey] Amazon",
                     "concurrent": 999,
                     "support": {
                         "zh_CN": "zh",
@@ -1993,7 +1993,7 @@
                 },
                 {
                     "key": "baidu",
-                    "name": "Baidu / 百度翻译",
+                    "name": "[ApiKey] Baidu / 百度翻译",
                     "concurrent": 1,
                     "support": {
                         "zh_CN": "zh",
@@ -2055,7 +2055,7 @@
                 },
                 {
                     "key": "alibaba",
-                    "name": "Alibaba / 阿里翻译",
+                    "name": "[ApiKey] Alibaba / 阿里翻译",
                     "concurrent": 50,
                     "support": {
                         "zh_CN": "zh",
@@ -2211,7 +2211,7 @@
                 },
                 {
                     "key": "youdao",
-                    "name": "Youdao / 有道翻译",
+                    "name": "[ApiKey] Youdao / 有道翻译",
                     "concurrent": 1,
                     "support": {
                         "zh_CN": "zh-CHS",
@@ -2339,7 +2339,7 @@
                 },
                 {
                     "key": "tencent",
-                    "name": "Tencent / 腾讯翻译",
+                    "name": "[ApiKey] Tencent / 腾讯翻译",
                     "concurrent": 5,
                     "support": {
                         "zh_CN": "zh",

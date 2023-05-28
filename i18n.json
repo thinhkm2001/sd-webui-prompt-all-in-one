@@ -83,7 +83,15 @@
                 "dblclick_to_disable": "鼠标双击禁用/启用关键词",
                 "batch_operation": "批量操作",
                 "success": "成功！",
-                "failed": "失败！"
+                "failed": "失败！",
+                "packages_desc": "检测到部分python包没有安装或者未安装成功，你需要点击尝试重新安装。所有包安装成功后，所有功能才能够正常使用。<br/>如果点击安装按钮后，还是无法成功安装。你需要手动复制命令并在终端执行。",
+                "installed": "已安装",
+                "not_install": "未安装",
+                "install": "安装",
+                "packages_installing": "开始安装......如需查询详细安装日志，请前往WebUI控制台查看。安装完成后，本窗口将自动关闭！",
+                "today_not_show": "今日不再显示本窗口",
+                "free": "免费",
+                "apply_for_free": "申请后免费使用"
             }
         },
         {
@@ -168,7 +176,15 @@
                 "dblclick_to_disable": "滑鼠雙擊禁用/啟用關鍵字",
                 "batch_operation": "批量操作",
                 "success": "成功！",
-                "failed": "失敗！"
+                "failed": "失敗！",
+                "packages_desc": "檢測到部分python包沒有安裝或者未安裝成功，你需要點擊嘗試重新安裝。所有包安裝成功後，所有功能才能夠正常使用。<br/>如果點擊安裝按鈕後，還是無法成功安裝。你需要手動複製命令並在終端執行。",
+                "installed": "已安裝",
+                "not_install": "未安裝",
+                "install": "安裝",
+                "packages_installing": "開始安裝......如需查詢詳細安裝日誌，請前往WebUI控制台查看。安裝完成後，本窗口將自動關閉！",
+                "today_not_show": "今日不再顯示本窗口",
+                "free": "免費",
+                "apply_for_free": "申請後免費使用"
             }
         },
         {
@@ -253,7 +269,15 @@
                 "dblclick_to_disable": "滑鼠雙擊禁用/啟用關鍵字",
                 "batch_operation": "批次操作",
                 "success": "成功！",
-                "failed": "失敗！"
+                "failed": "失敗！",
+                "packages_desc": "偵測到部分python包沒有安裝或者未安裝成功，你需要點擊嘗試重新安裝。所有包安裝成功後，所有功能才能夠正常使用。<br/>如果點擊安裝按鈕後，還是無法成功安裝。你需要手動複製命令並在終端執行。",
+                "installed": "已安裝",
+                "not_install": "未安裝",
+                "install": "安裝",
+                "packages_installing": "開始安裝......如需查詢詳細安裝日誌，請前往WebUI控制台查看。安裝完成後，本視窗將自動關閉！",
+                "today_not_show": "今日不再顯示本視窗",
+                "free": "免費",
+                "apply_for_free": "申請後免費使用"
             }
         },
         {
@@ -338,7 +362,15 @@
                 "dblclick_to_disable": "Double-click to disable/enable keyword",
                 "batch_operation": "Batch operation",
                 "success": "Success!",
-                "failed": "Failed!"
+                "failed": "Failed!",
+                "packages_desc": "Some packages of python are detected to have not been installed or installed unsuccessfully. You need to click to try reinstalling them. After all the packages are successfully installed, all the functions can work normally.<br/>If you still cannot install them successfully after clicking the install button, you need to manually copy the command and execute it in the terminal.",
+                "installed": "Installed",
+                "not_install": "Not installed",
+                "install": "Install",
+                "packages_installing": "Starting to install......If you need to check the detailed installation log, please go to the WebUI console to view it. After the installation is completed, this window will close automatically!",
+                "today_not_show": "Do not show this window today",
+                "free": "Free",
+                "apply_for_free": "Apply for free use"
             }
         },
         {
@@ -436,7 +468,15 @@
                 "dblclick_to_disable": "انقر مرتين لتعطيل / تمكين الكلمة الرئيسية",
                 "batch_operation": "العمليات الجماعية",
                 "success": "نجاح!",
-                "failed": "فشل!"
+                "failed": "فشل!",
+                "packages_desc": "تم اكتشاف بعض حزم Python بأنها لم تتم تثبيتها أو لم تتم التثبيت بنجاح. تحتاج إلى النقر لمحاولة إعادة التثبيت. بعد تثبيت جميع الحزم بنجاح ، يمكن لجميع الوظائف العمل بشكل طبيعي. <br/> إذا لم تتمكن من تثبيتها بنجاح بعد النقر على زر التثبيت ، فيجب عليك نسخ الأمر يدويًا وتنفيذه في وحدة المعالجة المركزية.",
+                "installed": "مثبت",
+                "not_install": "غير مثبت",
+                "install": "تثبيت",
+                "packages_installing": "بدء التثبيت ...... إذا كنت بحاجة إلى التحقق من سجل التثبيت التفصيلي ، فيرجى الانتقال إلى وحدة التحكم WebUI لعرضه. بعد الانتهاء من التثبيت ، سيتم إغلاق هذه النافذة تلقائيًا!",
+                "today_not_show": "لا تظهر هذه النافذة اليوم",
+                "free": "مجاني",
+                "apply_for_free": "التقديم للاستخدام المجاني"
             }
         },
         {
@@ -621,7 +661,15 @@
                 "dblclick_to_disable": "Double-cliquez pour désactiver/activer le mot-clé",
                 "batch_operation": "Opération en lot",
                 "success": "Réussite!",
-                "failed": "Échec!"
+                "failed": "Échec!",
+                "packages_desc": "Certains packages de python sont détectés comme non installés ou installés de manière infructueuse. Vous devez cliquer pour essayer de les réinstaller. Après que tous les packages sont installés avec succès, toutes les fonctions peuvent fonctionner normalement. <br/> Si vous ne pouvez toujours pas les installer avec succès après avoir cliqué sur le bouton d'installation, vous devez copier la commande manuellement et l'exécuter dans le terminal.",
+                "installed": "Installé",
+                "not_install": "Non installé",
+                "install": "Installer",
+                "packages_installing": "Démarrage de l'installation ...... Si vous avez besoin de vérifier le journal d'installation détaillé, veuillez aller sur la console WebUI pour le consulter. Après l'installation, cette fenêtre se fermera automatiquement !",
+                "today_not_show": "Ne pas afficher cette fenêtre aujourd'hui",
+                "free": "Gratuit",
+                "apply_for_free": "Demande d'utilisation gratuite"
             }
         },
         {
@@ -721,7 +769,15 @@
                 "dblclick_to_disable": "Doppelklicken zum Deaktivieren/Aktivieren des Schlüsselworts",
                 "batch_operation": "Massenoperation",
                 "success": "Erfolg!",
-                "failed": "Fehlgeschlagen!"
+                "failed": "Fehlgeschlagen!",
+                "packages_desc": "Einige Pakete von Python werden erkannt, dass sie nicht installiert oder erfolglos installiert wurden. Sie müssen klicken, um sie erneut zu installieren. Nachdem alle Pakete erfolgreich installiert wurden, können alle Funktionen normal funktionieren.<br/> Wenn Sie sie nach dem Klicken auf die Install-Schaltfläche immer noch nicht erfolgreich installieren können, müssen Sie den Befehl manuell kopieren und ihn im Terminal ausführen.",
+                "installed": "Installiert",
+                "not_install": "Nicht installiert",
+                "install": "Installieren",
+                "packages_installing": "Starte die Installation......Wenn Sie das detaillierte Installationsprotokoll überprüfen müssen, gehen Sie bitte zur WebUI-Konsole, um es anzuzeigen. Nachdem die Installation abgeschlossen ist, wird dieses Fenster automatisch geschlossen!",
+                "today_not_show": "Diese Fenster heute nicht anzeigen",
+                "free": "Kostenlos",
+                "apply_for_free": "Für kostenlose Nutzung bewerben"
             }
         },
         {
@@ -871,7 +927,15 @@
                 "dblclick_to_disable": "Doppio clic per disabilitare/abilitare la parola chiave",
                 "batch_operation": "Operazione batch",
                 "success": "Successo!",
-                "failed": "Fallito!"
+                "failed": "Fallito!",
+                "packages_desc": "Alcuni pacchetti di Python vengono rilevati come non installati o installati senza successo. Devi fare clic per tentare di reinstallarli. Dopo che tutti i pacchetti sono stati installati con successo, tutte le funzioni possono funzionare normalmente. <br/> Se non riesci ancora a installarli correttamente dopo aver cliccato sul pulsante di installazione, devi copiare il comando manualmente ed eseguirlo nel terminale.",
+                "installed": "Installato",
+                "not_install": "Non installato",
+                "install": "Installa",
+                "packages_installing": "Avvio dell'installazione ...... Se hai bisogno di controllare il registro di installazione dettagliato, vai alla console WebUI per visualizzarlo. Dopo l'installazione, questa finestra verrà chiusa automaticamente!",
+                "today_not_show": "Non mostrare questa finestra oggi",
+                "free": "Gratuito",
+                "apply_for_free": "Richiedi l'uso gratuito"
             }
         },
         {
@@ -956,7 +1020,15 @@
                 "dblclick_to_disable": "キーワードの無効化/有効化にはダブルクリックしてください",
                 "batch_operation": "バッチ操作",
                 "success": "成功しました!",
-                "failed": "失敗しました！"
+                "failed": "失敗しました！",
+                "packages_desc": "一部のPythonパッケージがインストールされていないか、または正常にインストールされていません。再インストールするためにクリックする必要があります。すべてのパッケージが正常にインストールされると、すべての機能が正常に動作します。<br/>インストールボタンをクリックしてもうまくインストールできない場合は、コマンドを手動でコピーしてターミナルで実行する必要があります。",
+                "installed": "インストール済み",
+                "not_install": "未インストール",
+                "install": "インストール",
+                "packages_installing": "インストールを開始します......詳細なインストールログを確認する必要がある場合は、WebUIコンソールに移動して表示してください。インストールが完了すると、このウィンドウは自動的に閉じられます！",
+                "today_not_show": "今日このウィンドウを表示しない",
+                "free": "無料",
+                "apply_for_free": "無料使用を申請する"
             }
         },
         {
@@ -1066,7 +1138,15 @@
                 "dblclick_to_disable": "키워드를 사용 안 함/사용으로 바꾸려면 더블 클릭",
                 "batch_operation": "일괄 작업",
                 "success": "성공!",
-                "failed": "실패!"
+                "failed": "실패!",
+                "packages_desc": "일부 Python 패키지가 설치되지 않았거나 설치하지 못했습니다. 다시 설치하려면 클릭해야합니다. 모두 성공적으로 설치 된 후 모든 기능을 정상적으로 사용할 수 있습니다. <br/> 설치 버튼을 클릭 한 후에도 여전히 성공적으로 설치 할 수 없는 경우 명령을 수동으로 복사하고 터미널에서 실행해야합니다.",
+                "installed": "설치됨",
+                "not_install": "미설치",
+                "install": "설치",
+                "packages_installing": "설치 시작 중 ...... 자세한 설치 로그를 확인해야하는 경우 WebUI 콘솔로 이동하여 확인하십시오. 설치가 완료되면이 창이 자동으로 닫힙니다!",
+                "today_not_show": "오늘 이 창을 표시하지 않음",
+                "free": "무료",
+                "apply_for_free": "무료 사용 신청"
             }
         },
         {
@@ -1266,7 +1346,15 @@
                 "dblclick_to_disable": "Clique duas vezes para desativar/ativar palavra-chave",
                 "batch_operation": "Operação em lote",
                 "success": "Sucesso!",
-                "failed": "Falha!"
+                "failed": "Falha!",
+                "packages_desc": "Alguns pacotes do Python são detectados como não instalados ou instalados sem sucesso. Você precisa clicar para tentar reinstalá-los. Depois que todos os pacotes forem instalados com sucesso, todas as funções podem funcionar normalmente. <br/> Se você ainda não conseguir instalá-los com sucesso após clicar no botão de instalação, precisará copiar o comando manualmente e executá-lo no terminal.",
+                "installed": "Instalados",
+                "not_install": "Não instalado",
+                "install": "Instalar",
+                "packages_installing": "Iniciando a instalação ...... Se você precisar verificar o log de instalação detalhado, vá para o console WebUI para visualizá-lo. Depois que a instalação for concluída, esta janela será fechada automaticamente!",
+                "today_not_show": "Não mostrar esta janela hoje",
+                "free": "Grátis",
+                "apply_for_free": "Solicitar uso gratuito"
             }
         },
         {
@@ -1366,7 +1454,15 @@
                 "dblclick_to_disable": "Двойной щелчок, чтобы отключить/включить ключевое слово",
                 "batch_operation": "Пакетная операция",
                 "success": "Успех!",
-                "failed": "Не удалось!"
+                "failed": "Не удалось!",
+                "packages_desc": "Некоторые пакеты Python обнаружены как незапущенные или запущенные безуспешно. Вам нужно щелкнуть, чтобы попробовать повторно установить их. После того, как все пакеты будут успешно установлены, все функции могут работать нормально.<br/> Если вы по-прежнему не можете успешно установить их после нажатия кнопки установки, вам нужно вручную скопировать команду и выполнить ее в терминале.",
+                "installed": "Установленный",
+                "not_install": "Не установлен",
+                "install": "Установить",
+                "packages_installing": "Запуск установки ...... Если вам нужно проверить подробный журнал установки, перейдите на консоль WebUI, чтобы просмотреть его. После завершения установки это окно будет автоматически закрыто!",
+                "today_not_show": "Не показывать это окно сегодня",
+                "free": "Бесплатно",
+                "apply_for_free": "Подать заявку на бесплатное использование"
             }
         },
         {
@@ -1481,7 +1577,15 @@
                 "dblclick_to_disable": "Doble clic para desactivar/activar la palabra clave",
                 "batch_operation": "Operación por lotes",
                 "success": "Éxito!",
-                "failed": "Fracaso!"
+                "failed": "Fracaso!",
+                "packages_desc": "Algunos paquetes de Python se detectan como no instalados o instalados sin éxito. Debe hacer clic para intentar reinstalarlos. Después de que todos los paquetes estén instalados correctamente, todas las funciones pueden funcionar normalmente. <br/> Si aún no puede instalarlos con éxito después de hacer clic en el botón de instalación, debe copiar el comando manualmente y ejecutarlo en la terminal.",
+                "installed": "Instalado",
+                "not_install": "No instalado",
+                "install": "Instalar",
+                "packages_installing": "Iniciando la instalación...... Si necesita verificar el registro de instalación detallado, vaya a la consola WebUI para verlo. ¡Después de que finalice la instalación, esta ventana se cerrará automáticamente!",
+                "today_not_show": "No mostrar esta ventana hoy",
+                "free": "Gratis",
+                "apply_for_free": "Solicitar uso gratuito"
             }
         },
         {
