@@ -136,7 +136,7 @@
                             "type": "select",
                             "default": "EN",
                             "options": [
-                                "China",
+                                "CN",
                                 "EN"
                             ]
                         }
@@ -256,7 +256,7 @@
                             "type": "select",
                             "default": "EN",
                             "options": [
-                                "China",
+                                "CN",
                                 "EN"
                             ]
                         }
