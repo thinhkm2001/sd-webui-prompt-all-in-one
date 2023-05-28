@@ -606,7 +606,7 @@ export default {
                     }
 
                     if (tag.weightNum > 0) {
-                        tag.weightNum = Number(parseFloat(tag.weightNum).toFixed(2))
+                        tag.weightNum = Number(parseFloat(tag.weightNum).toFixed(6))
                         tag.value = tag.value.replace(common.weightNumRegex, '$1:' + tag.weightNum)
                         if (tag.localValue !== '') {
                             tag.localValue = tag.localValue.replace(common.weightNumRegex, '$1:' + tag.weightNum)
