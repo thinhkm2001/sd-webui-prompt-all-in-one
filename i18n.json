@@ -80,7 +80,10 @@
                 "is_keep_weight_zero": "是否保留关键词权重为0的格式。<br/>勾选后关键词保留格式为“(text:0)”。<br/>取消勾选将不保留格式为“test”。",
                 "prompt_format": "Prompt格式",
                 "tagcomplete_translate_desc2": "选择了错误的CSV文件，将导致翻译结果为空，或者为“0”。更换文件后，请点击下方的测试按钮，然后检查翻译的结果是否正确的显示了你的本地语言。",
-                "dblclick_to_disable": "鼠标双击禁用/启用关键词"
+                "dblclick_to_disable": "鼠标双击禁用/启用关键词",
+                "batch_operation": "批量操作",
+                "success": "成功！",
+                "failed": "失败！"
             }
         },
         {
@@ -162,7 +165,10 @@
                 "is_keep_weight_zero": "是否保留關鍵詞權重為0的格式。<br/>勾選後關鍵詞保留格式為“(text:0)”。<br/>取消勾選將不保留格式為“test”。",
                 "prompt_format": "Prompt格式",
                 "tagcomplete_translate_desc2": "選擇了錯誤的CSV文件，將導致翻譯結果為空或為“0”。更換文件後，請點擊下方的測試按鈕，然後檢查翻譯的結果是否正確地顯示了您的本地語言。",
-                "dblclick_to_disable": "滑鼠雙擊禁用/啟用關鍵字"
+                "dblclick_to_disable": "滑鼠雙擊禁用/啟用關鍵字",
+                "batch_operation": "批量操作",
+                "success": "成功！",
+                "failed": "失敗！"
             }
         },
         {
@@ -244,7 +250,10 @@
                 "is_keep_weight_zero": "是否保留關鍵詞權重為0的格式。<br/>勾選後關鍵詞保留格式為“(text:0)”。<br/>取消勾選將不保留格式為“test”。",
                 "prompt_format": "Prompt格式",
                 "tagcomplete_translate_desc2": "選擇了錯誤的CSV檔案，會導致翻譯結果為空或“0”。更改檔案後，請點擊下方的測試按鈕，檢查是否正確顯示本地語言的翻譯結果。",
-                "dblclick_to_disable": "滑鼠雙擊禁用/啟用關鍵字"
+                "dblclick_to_disable": "滑鼠雙擊禁用/啟用關鍵字",
+                "batch_operation": "批次操作",
+                "success": "成功！",
+                "failed": "失敗！"
             }
         },
         {
@@ -326,7 +335,10 @@
                 "is_keep_weight_zero": "Keep the format of keywords with a weight of 0 or not.<br/>When selected, the keyword format is kept as \"(text:0)\".<br/>When unselected, the format is not kept as \"test\".",
                 "prompt_format": "Prompt Format",
                 "tagcomplete_translate_desc2": "Selecting the wrong CSV file will result in an empty or '0' translation. After changing the file, please click the test button below and check if the translated result is correctly displayed in your local language.",
-                "dblclick_to_disable": "Double-click to disable/enable keyword"
+                "dblclick_to_disable": "Double-click to disable/enable keyword",
+                "batch_operation": "Batch operation",
+                "success": "Success!",
+                "failed": "Failed!"
             }
         },
         {
@@ -421,7 +433,10 @@
                 "auto_translate": "ترجم تلقائيًا بعد إدخال كلمات رئيسية جديدة",
                 "prompt_format": "تنسيق Prompt",
                 "tagcomplete_translate_desc2": "اختيار ملف CSV الخاطئ سيؤدي إلى ترجمة فارغة أو '0'. بعد تغيير الملف، يرجى النقر على زر الاختبار أدناه والتحقق مما إذا كانت النتيجة المترجمة تعرض بشكل صحيح بلغتك المحلية.",
-                "dblclick_to_disable": "انقر مرتين لتعطيل / تمكين الكلمة الرئيسية"
+                "dblclick_to_disable": "انقر مرتين لتعطيل / تمكين الكلمة الرئيسية",
+                "batch_operation": "العمليات الجماعية",
+                "success": "نجاح!",
+                "failed": "فشل!"
             }
         },
         {
@@ -603,7 +618,10 @@
                 "is_keep_weight_zero": "Conserver ou non le format des mots clés ayant un poids de 0.<br/>Lorsqu'elle est sélectionnée, le format du mot clé est conservé sous la forme de \"(text:0)\".<br/>Lorsqu'elle n'est pas sélectionnée, le format n'est pas conservé sous la forme de \"test\".",
                 "prompt_format": "Format du prompt",
                 "tagcomplete_translate_desc2": "Sélectionner le mauvais fichier CSV entraînera une traduction vide ou '0'. Après avoir changé le fichier, veuillez cliquer sur le bouton de test ci-dessous et vérifier si le résultat traduit est correctement affiché dans votre langue locale.",
-                "dblclick_to_disable": "Double-cliquez pour désactiver/activer le mot-clé"
+                "dblclick_to_disable": "Double-cliquez pour désactiver/activer le mot-clé",
+                "batch_operation": "Opération en lot",
+                "success": "Réussite!",
+                "failed": "Échec!"
             }
         },
         {
@@ -700,7 +718,10 @@
                 "is_keep_weight_zero": "Das Format von Schlüsselwörtern mit einem Gewicht von 0 beibehalten oder nicht.<br/>Wenn ausgewählt, wird das Schlüsselwortformat als \"(text:0)\" beibehalten.<br/>Wenn nicht ausgewählt, wird das Format nicht als \"test\" beibehalten.",
                 "prompt_format": "Prompt-Format",
                 "tagcomplete_translate_desc2": "Die Auswahl der falschen CSV-Datei führt zu einer leeren oder '0' Übersetzung. Nachdem Sie die Datei geändert haben, klicken Sie bitte auf die Test-Schaltfläche unten und prüfen Sie, ob das übersetzte Ergebnis korrekt in Ihrer lokalen Sprache angezeigt wird.",
-                "dblclick_to_disable": "Doppelklicken zum Deaktivieren/Aktivieren des Schlüsselworts"
+                "dblclick_to_disable": "Doppelklicken zum Deaktivieren/Aktivieren des Schlüsselworts",
+                "batch_operation": "Massenoperation",
+                "success": "Erfolg!",
+                "failed": "Fehlgeschlagen!"
             }
         },
         {
@@ -847,7 +868,10 @@
                 "is_keep_weight_zero": "Mantenere o meno il formato delle parole chiave con un peso pari a 0.<br/>Quando selezionato, il formato della parola chiave viene mantenuto come \"(text:0)\".<br/>Quando non selezionato, il formato non viene mantenuto come \"test\".",
                 "prompt_format": "Formato del prompt",
                 "tagcomplete_translate_desc2": "La selezione del file CSV sbagliato comporterà una traduzione vuota o '0'. Dopo aver modificato il file, fare clic sul pulsante di test di seguito e verificare se il risultato tradotto viene visualizzato correttamente nella propria lingua locale.",
-                "dblclick_to_disable": "Doppio clic per disabilitare/abilitare la parola chiave"
+                "dblclick_to_disable": "Doppio clic per disabilitare/abilitare la parola chiave",
+                "batch_operation": "Operazione batch",
+                "success": "Successo!",
+                "failed": "Fallito!"
             }
         },
         {
@@ -929,7 +953,10 @@
                 "is_keep_weight_zero": "重みが0のキーワードのフォーマットを保持するかどうか。<br/>選択した場合、キーワードのフォーマットは「(text:0)」として保持されます。<br/>選択されていない場合、フォーマットは「test」として保持されません。",
                 "prompt_format": "プロンプトの形式",
                 "tagcomplete_translate_desc2": "間違ったCSVファイルを選択すると、空の翻訳または「0」になります。ファイルを変更した後、下のテストボタンをクリックして、翻訳結果が正しくローカル言語で表示されるかどうかを確認してください。",
-                "dblclick_to_disable": "キーワードの無効化/有効化にはダブルクリックしてください"
+                "dblclick_to_disable": "キーワードの無効化/有効化にはダブルクリックしてください",
+                "batch_operation": "バッチ操作",
+                "success": "成功しました!",
+                "failed": "失敗しました！"
             }
         },
         {
@@ -1036,7 +1063,10 @@
                 "is_keep_weight_zero": "무게가 0인 키워드 형식을 유지할 것인가요?<br/>선택한 경우, 키워드 형식은 \"(text:0)\"로 유지됩니다.<br/>선택하지 않은 경우, 형식은 \"test\"로 유지되지 않습니다.",
                 "prompt_format": "프롬프트 형식",
                 "tagcomplete_translate_desc2": "잘못된 CSV 파일을 선택하면 빈 번역이나 '0'이 됩니다. 파일을 변경한 후에는 아래의 테스트 버튼을 클릭하고 번역된 결과가 로컬 언어로 올바르게 표시되는지 확인하십시오.",
-                "dblclick_to_disable": "키워드를 사용 안 함/사용으로 바꾸려면 더블 클릭"
+                "dblclick_to_disable": "키워드를 사용 안 함/사용으로 바꾸려면 더블 클릭",
+                "batch_operation": "일괄 작업",
+                "success": "성공!",
+                "failed": "실패!"
             }
         },
         {
@@ -1233,7 +1263,10 @@
                 "is_keep_weight_zero": "Manter ou não o formato das palavras-chave com um peso de 0.<br/>Quando selecionado, o formato da palavra-chave é mantido como \"(text:0)\".<br/>Quando não selecionado, o formato não é mantido como \"test\".",
                 "prompt_format": "Formato do prompt",
                 "tagcomplete_translate_desc2": "Selecionar o arquivo CSV errado resultará em uma tradução vazia ou '0'. Após alterar o arquivo, clique no botão de teste abaixo e verifique se o resultado traduzido é exibido corretamente em seu idioma local.",
-                "dblclick_to_disable": "Clique duas vezes para desativar/ativar palavra-chave"
+                "dblclick_to_disable": "Clique duas vezes para desativar/ativar palavra-chave",
+                "batch_operation": "Operação em lote",
+                "success": "Sucesso!",
+                "failed": "Falha!"
             }
         },
         {
@@ -1330,7 +1363,10 @@
                 "is_keep_weight_zero": "Сохранять формат ключевых слов с нулевым весом или нет?<br/> Если выбрано, то формат ключевых слов будет сохранен как \"(test:0)\". <br/> Если не выбрано, то формат будет \"test\" без скобок.",
                 "prompt_format": "Формат Prompt",
                 "tagcomplete_translate_desc2": "Выбор неправильного файла CSV приведет к пустому или «0» переводу. После изменения файла нажмите кнопку тестирования ниже и проверьте, правильно ли отображен переведенный результат на вашем локальном языке.",
-                "dblclick_to_disable": "Двойной щелчок, чтобы отключить/включить ключевое слово"
+                "dblclick_to_disable": "Двойной щелчок, чтобы отключить/включить ключевое слово",
+                "batch_operation": "Пакетная операция",
+                "success": "Успех!",
+                "failed": "Не удалось!"
             }
         },
         {
@@ -1442,7 +1478,10 @@
                 "is_keep_weight_zero": "¿Mantener el formato de palabras clave con peso 0? <br/> Si está marcado, el formato será \"(test:0)\". <br/> Si no está marcado, el formato será \"test\" sin paréntesis.",
                 "prompt_format": "Formato de Prompt",
                 "tagcomplete_translate_desc2": "Seleccionar el archivo CSV incorrecto dará como resultado una traducción vacía o '0'. Después de cambiar el archivo, por favor haga clic en el botón de prueba a continuación y compruebe si el resultado traducido se muestra correctamente en su idioma local.",
-                "dblclick_to_disable": "Doble clic para desactivar/activar la palabra clave"
+                "dblclick_to_disable": "Doble clic para desactivar/activar la palabra clave",
+                "batch_operation": "Operación por lotes",
+                "success": "Éxito!",
+                "failed": "Fracaso!"
             }
         },
         {

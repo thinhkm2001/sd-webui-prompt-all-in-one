@@ -208,132 +208,161 @@
                     </div>
                 </div>
             </div>
-            <div :class="['prompt-tags', dropTag ? 'droping': '']" ref="promptTags">
+            <div :class="['prompt-tags', droping ? 'droping': '', (dropIsSelecting || (dropIsEnd && dropTags.length)) ? 'selecting' : '']" ref="promptTags"
+                 @mousedown="onDropMouseDown"
+                 @mousemove="onDropMouseMove"
+                 @mouseup="onDropMouseUp">
                 <div class="prompt-tags-list" ref="promptTagsList">
-                    <template v-for="(tag, index) in tags" :key="tag.id" :data-id="tag.id">
-                        <div :class="['prompt-tag', tag.disabled ? 'disabled': '', tag.type === 'wrap' ? 'wrap-tag' : '']"
-                             :ref="'promptTag-' + tag.id">
-                            <div class="prompt-tag-main" @mouseenter="onTagMouseEnter(index)">
-                                <div class="prompt-tag-edit">
-                                    <template v-if="tag.type === 'wrap'">
-                                        <div class="prompt-tag-value"
-                                             :ref="'promptTagValue-' + tag.id"
-                                             v-tooltip="getLang('line_break_character') + '<br/>' + getLang('drop_to_order')"
-                                             style="width: 100%">
-                                            <icon-svg name="wrap"/>
-                                        </div>
-                                    </template>
-                                    <!--<template v-else-if="tag.type === 'favorite'">
-                                    </template>
-                                    <template v-else-if="tag.type === 'history'">
-                                    </template>-->
-                                    <template v-else>
-                                        <div v-show="!editing[tag.id]"
-                                             :class="tag.classes"
-                                             :ref="'promptTagValue-' + tag.id"
-                                             v-tooltip="getLang('click_to_edit') + '<br/>' + getLang('dblclick_to_disable') + '<br/>' + getLang('drop_to_order')"
-                                             @click="onTagClick(index, $event)" @dblclick="onTagDblclick(index)" v-html="renderTag(index)">
-                                        </div>
-                                        <textarea v-show="editing[tag.id]" type="text"
-                                                  class="scroll-hide svelte-4xt1ch input-tag-edit"
-                                                  :ref="'promptTagEdit-' + tag.id"
-                                                  :placeholder="getLang('enter_to_save')"
-                                                  :value="tag.value"
-                                                  @blur="onTagInputBlur(index)"
-                                                  @keydown="onTagInputKeyDown(index, $event)"
-                                                  @change="onTagInputChange(index, $event)"></textarea>
-                                        <!--<input v-show="editing[tag.id]" type="text"
-                                               class="scroll-hide svelte-4xt1ch input-tag-edit"
-                                               :ref="'promptTagEdit-' + tag.id" :placeholder="getLang('enter_to_save')"
-                                               :value="tag.value" @blur="onTagInputBlur(index)"
-                                               @keydown="onTagInputKeyDown(index, $event)"
-                                               @change="onTagInputChange(index, $event)">-->
-                                    </template>
-                                    <div class="btn-tag-delete" :ref="'promptTagDelete-' + tag.id"
-                                         @click="onDeleteTagClick(index)">
-                                        <icon-svg name="close"/>
-                                    </div>
-                                </div>
-                                <div class="btn-tag-extend" v-show="(tag.type === 'text' || !tag.type)">
-                                    <vue-number-input class="input-number" :model-value="tag.weightNum" center controls
-                                                      :min="0" :step="0.1" size="small"
-                                                      @update:model-value="onTagWeightNumChange(index, $event)"></vue-number-input>
-                                    <button type="button" v-tooltip="getLang('increase_weight_add_parentheses')"
-                                            @click="onIncWeightClick(index, +1)">
-                                        <icon-svg name="weight-parentheses-inc"/>
-                                    </button>
-                                    <button type="button" v-tooltip="getLang('increase_weight_subtract_parentheses')"
-                                            @click="onIncWeightClick(index, -1)">
-                                        <icon-svg name="weight-parentheses-dec"/>
-                                    </button>
-                                    <button type="button" v-tooltip="getLang('decrease_weight_add_brackets')"
-                                            @click="onDecWeightClick(index, +1)">
-                                        <icon-svg name="weight-brackets-inc"/>
-                                    </button>
-                                    <button type="button" v-tooltip="getLang('decrease_weight_subtract_brackets')"
-                                            @click="onDecWeightClick(index, -1)">
-                                        <icon-svg name="weight-brackets-dec"/>
-                                    </button>
-                                    <button type="button"
-                                            v-tooltip="getLang('line_break_character')"
-                                            @click="onWrapTagClick(index)">
+                    <div v-for="(tag, index) in tags" :key="tag.id" :class="['prompt-tag', tag.disabled ? 'disabled': '', tag.type === 'wrap' ? 'wrap-tag' : '']"
+                         :ref="'promptTag-' + tag.id" :data-id="tag.id">
+                        <div class="prompt-tag-main" @mouseenter="onTagMouseEnter(tag.id)"
+                             @mousedown.stop="" @mousemove.stop="" @mouseup.stop="">
+                            <div class="prompt-tag-edit">
+                                <template v-if="tag.type === 'wrap'">
+                                    <div class="prompt-tag-value"
+                                         :ref="'promptTagValue-' + tag.id"
+                                         v-tooltip="getLang('line_break_character') + '<br/>' + getLang('drop_to_order')"
+                                         style="width: 100%">
                                         <icon-svg name="wrap"/>
-                                    </button>
-                                    <button type="button" v-tooltip="getLang('translate_keyword_to_english')"
-                                            v-show="!isEnglish"
-                                            @click="onTranslateToEnglishClick(index)">
-                                        <icon-svg v-if="!loading[tag.id + '_en']" name="english"/>
-                                        <icon-svg v-if="loading[tag.id + '_en']" name="loading"/>
-                                    </button>
-                                    <button type="button" v-tooltip="getLang('copy_to_clipboard')"
-                                            @click="copy(tag.value)">
-                                        <icon-svg name="copy"/>
-                                    </button>
-                                    <button type="button"
-                                            v-tooltip="getLang(tag.isFavorite ? 'remove_from_favorite': 'add_to_favorite')"
-                                            @click="onFavoriteTagClick(index)">
-                                        <icon-svg v-if="tag.isFavorite" name="favorite-yes"/>
-                                        <icon-svg v-if="!tag.isFavorite" name="favorite-no"/>
-                                    </button>
-                                    <button type="button"
-                                            v-tooltip="getLang(tag.disabled ? 'enable_keyword': 'disable_keyword')"
-                                            @click="onDisabledTagClick(index)">
-                                        <icon-svg v-if="!tag.disabled" name="disabled"/>
-                                        <icon-svg v-if="tag.disabled" name="enable"/>
-                                    </button>
+                                    </div>
+                                </template>
+                                <!--<template v-else-if="tag.type === 'favorite'">
+                                </template>
+                                <template v-else-if="tag.type === 'history'">
+                                </template>-->
+                                <template v-else>
+                                    <div v-show="!editing[tag.id]"
+                                         :class="tag.classes"
+                                         :ref="'promptTagValue-' + tag.id"
+                                         v-tooltip="getLang('click_to_edit') + '<br/>' + getLang('dblclick_to_disable') + '<br/>' + getLang('drop_to_order')"
+                                         @click="onTagClick(tag.id, $event)" @dblclick="onTagDblclick(tag.id)" v-html="renderTag(tag.id)">
+                                    </div>
+                                    <textarea v-show="editing[tag.id]" type="text"
+                                              class="scroll-hide svelte-4xt1ch input-tag-edit"
+                                              :ref="'promptTagEdit-' + tag.id"
+                                              :placeholder="getLang('enter_to_save')"
+                                              :value="tag.value"
+                                              @blur="onTagInputBlur(tag.id)"
+                                              @keydown="onTagInputKeyDown(tag.id, $event)"
+                                              @change="onTagInputChange(tag.id, $event)"></textarea>
+                                    <!--<input v-show="editing[tag.id]" type="text"
+                                           class="scroll-hide svelte-4xt1ch input-tag-edit"
+                                           :ref="'promptTagEdit-' + tag.id" :placeholder="getLang('enter_to_save')"
+                                           :value="tag.value" @blur="onTagInputBlur(tag.id)"
+                                           @keydown="onTagInputKeyDown(tag.id, $event)"
+                                           @change="onTagInputChange(tag.id, $event)">-->
+                                </template>
+                                <div class="btn-tag-delete" :ref="'promptTagDelete-' + tag.id"
+                                     @click="onDeleteTagClick(tag.id)">
+                                    <icon-svg name="close"/>
                                 </div>
                             </div>
-                            <div class="prompt-local-language"
-                                 v-show="!isEnglish && (tag.type === 'text' || !tag.type)">
-                                <div class="translate-to-local hover-scale-120"
-                                     v-tooltip="getLang('translate_keyword_to_local_language')"
-                                     @click="onTranslateToLocalClick(index)">
-                                    <icon-svg v-if="!loading[tag.id + '_local']" name="translate"/>
-                                    <icon-svg v-if="loading[tag.id + '_local']" name="loading"/>
-                                </div>
-                                <div class="local-language">{{ tag.localValue }}</div>
+                            <div class="btn-tag-extend" v-show="(tag.type === 'text' || !tag.type)">
+                                <vue-number-input class="input-number" :model-value="tag.weightNum" center controls
+                                                  :min="0" :step="0.1" size="small"
+                                                  @update:model-value="onTagWeightNumChange(tag.id, $event)"></vue-number-input>
+                                <button type="button" v-tooltip="getLang('increase_weight_add_parentheses')"
+                                        @click="onIncWeightClick(tag.id, +1)">
+                                    <icon-svg name="weight-parentheses-inc"/>
+                                </button>
+                                <button type="button" v-tooltip="getLang('increase_weight_subtract_parentheses')"
+                                        @click="onIncWeightClick(tag.id, -1)">
+                                    <icon-svg name="weight-parentheses-dec"/>
+                                </button>
+                                <button type="button" v-tooltip="getLang('decrease_weight_add_brackets')"
+                                        @click="onDecWeightClick(tag.id, +1)">
+                                    <icon-svg name="weight-brackets-inc"/>
+                                </button>
+                                <button type="button" v-tooltip="getLang('decrease_weight_subtract_brackets')"
+                                        @click="onDecWeightClick(tag.id, -1)">
+                                    <icon-svg name="weight-brackets-dec"/>
+                                </button>
+                                <button type="button"
+                                        v-tooltip="getLang('line_break_character')"
+                                        @click="onWrapTagClick(tag.id)">
+                                    <icon-svg name="wrap"/>
+                                </button>
+                                <button type="button" v-tooltip="getLang('translate_keyword_to_english')"
+                                        v-show="!isEnglish"
+                                        @click="onTranslateToEnglishClick(tag.id)">
+                                    <icon-svg v-if="!loading[tag.id + '_en']" name="english"/>
+                                    <icon-svg v-if="loading[tag.id + '_en']" name="loading"/>
+                                </button>
+                                <button type="button" v-tooltip="getLang('copy_to_clipboard')"
+                                        @click="copy(tag.value)">
+                                    <icon-svg name="copy"/>
+                                </button>
+                                <button type="button"
+                                        v-tooltip="getLang(tag.isFavorite ? 'remove_from_favorite': 'add_to_favorite')"
+                                        @click="onFavoriteTagClick(tag.id)">
+                                    <icon-svg v-if="tag.isFavorite" name="favorite-yes"/>
+                                    <icon-svg v-if="!tag.isFavorite" name="favorite-no"/>
+                                </button>
+                                <button type="button"
+                                        v-tooltip="getLang(tag.disabled ? 'enable_keyword': 'disable_keyword')"
+                                        @click="onDisabledTagClick(tag.id)">
+                                    <icon-svg v-if="!tag.disabled" name="disabled"/>
+                                    <icon-svg v-if="tag.disabled" name="enable"/>
+                                </button>
                             </div>
                         </div>
-                        <div :class="['prompt-wrap', tag.type === 'wrap' ? 'wrap-tag' : '']" ref="promptTagWrap"></div>
-                    </template>
+                        <div class="prompt-local-language"
+                             v-show="!isEnglish && (tag.type === 'text' || !tag.type)">
+                            <div class="translate-to-local hover-scale-120"
+                                 v-tooltip="getLang('translate_keyword_to_local_language')"
+                                 @click="onTranslateToLocalClick(tag.id)" @mousedown.stop="" @mousemove.stop=""
+                                 @mouseup.stop="">
+                                <icon-svg v-if="!loading[tag.id + '_local']" name="translate"/>
+                                <icon-svg v-if="loading[tag.id + '_local']" name="loading"/>
+                            </div>
+                            <div class="local-language">{{ tag.localValue }}</div>
+                        </div>
+                    </div>
+                    <div v-for="(tag, index) in tags" :key="tag.id" :class="['prompt-wrap', tag.type === 'wrap' ? 'wrap-tag' : '']" :data-id="tag.id" ref="promptTagWrap"
+                         @mousedown.stop="" @mousemove.stop="" @mouseup.stop=""></div>
                 </div>
                 <!--<div class="prompt-append">
                     <input type="text" class="scroll-hide svelte-4xt1ch input-tag-append" ref="promptTagAppend"
                            v-model="appendTag" :placeholder="getLang('please_enter_new_keyword')"
                            v-tooltip="getLang('enter_to_add')" @keydown="onAppendTagKeyDown">
                 </div>-->
+                <div class="drop-select-bg" ref="dropSelectBg" :style="{'display': dropIsStart ? 'block': 'none'}"></div>
+                <div class="drop-select-box" ref="dropSelectBox" :style="{'display': dropIsSelecting ? 'block': 'none', top: dropArea.top + 'px', 'left': dropArea.left + 'px', 'width': dropArea.width + 'px', 'height': dropArea.height + 'px'}"></div>
+                <div class="drop-select-btns" ref="dropSelectBtns"
+                     :style="{'display': dropIsEnd && dropTags.length ? 'flex': 'none', top: (dropEndY - 32) + 'px', 'left': dropEndX + 'px'}"
+                     @mousedown.stop="" @mousemove.stop="" @mouseup.stop="">
+                    <div class="btns-title">{{ getLang('batch_operation') }}</div>
+                    <button type="button" v-tooltip="getLang('copy_to_clipboard')" @click="onDropCopy">
+                        <icon-svg name="copy"/>
+                    </button>
+                    <button type="button" v-tooltip="getLang('add_to_favorite')" @click="onDropFavorite">
+                        <icon-svg name="favorite-no"/>
+                    </button>
+                    <button type="button" v-tooltip="getLang('disable_keyword')" @click="onDropDisable">
+                        <icon-svg name="disabled"/>
+                    </button>
+                    <button type="button" v-tooltip="getLang('enable_keyword')" @click="onDropEnable">
+                        <icon-svg name="enable"/>
+                    </button>
+                    <button type="button" @click="onDropDelete">
+                        <icon-svg name="remove"/>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import autoSizeInput from 'autosize-input'
-import Sortable from 'sortablejs'
+import Sortable from "sortablejs"
+
 import common from "@/utils/common"
 
 import LanguageMixin from "@/mixins/languageMixin"
 import VueNumberInput from '@chenfengyuan/vue-number-input'
+import HeaderMixin from "@/mixins/phystonPrompt/headerMixin"
+import DropMixin from "@/mixins/phystonPrompt/dropMixin"
+import TagMixin from "@/mixins/phystonPrompt/tagMixin"
 import IconSvg from "@/components/iconSvg.vue"
 
 export default {
@@ -342,7 +371,7 @@ export default {
         VueNumberInput,
         IconSvg
     },
-    mixins: [LanguageMixin],
+    mixins: [LanguageMixin, HeaderMixin, DropMixin, TagMixin],
     props: {
         name: {
             type: String,
@@ -431,43 +460,11 @@ export default {
             prompt: '',
             counterText: '0/75',
             tags: [],
-            showAppendList: false,
-            appendListStyle: {
-                top: 0,
-                left: 0,
-            },
-            appendListSelected: null,
-            appendListChildSelected: null,
-            appendList: [
-                {
-                    "type": "wrap",
-                    "name": "line_break_character",
-                    "icon": "wrap",
-                    "children": []
-                },
-                /*{
-                    "type": "lora",
-                    "name": "Lora",
-                    "children": []
-                },*/
-                /*{
-                    "type": "favorite",
-                    "name": "favorite",
-                    "icon": "favorite",
-                    "children": []
-                },
-                {
-                    "type": "history",
-                    "name": "history",
-                    "icon": "history",
-                    "children": []
-                }*/
-            ],
-            dropTag: false,
+
+            sortable: null,
+            droping: false,
             loading: {},
             editing: {},
-            autocompleteResults: null,
-            tagClickTimeId: 0,
         }
     },
     computed: {
@@ -477,90 +474,6 @@ export default {
         translateApiItem() {
             return common.getTranslateApiItem(this.translateApis, this.translateApi)
         },
-        appendListChildItemTags() {
-            if (this.appendListSelected === null) return []
-            if (this.appendListChildSelected === null) return []
-            if (this.appendList[this.appendListSelected].type !== 'favorite' && this.appendList[this.appendListSelected].type !== 'history') return []
-            return this.appendList[this.appendListSelected].children[this.appendListChildSelected].tags
-        }
-    },
-    mounted() {
-        let temp = [
-            {
-                'name': 'txt2img',
-                'type': 'prompt',
-                'key': 'txt2img',
-                'neg': false,
-            },
-            {
-                'name': 'txt2img',
-                'type': 'negative_prompt',
-                'key': 'txt2img_neg',
-                'neg': true,
-            },
-            {
-                'name': 'img2img',
-                'type': 'prompt',
-                'key': 'img2img',
-                'neg': false,
-            },
-            {
-                'name': 'img2img',
-                'type': 'negative_prompt',
-                'key': 'img2img_neg',
-                'neg': true,
-            },
-        ]
-        /*for (let i = 0; i < temp.length; i++) {
-            if (temp[i].key === this.favoriteKey) {
-                // 排到第一位
-                let item = temp[i]
-                temp.splice(i, 1)
-                temp.unshift(item)
-                break
-            }
-        }*/
-        temp.forEach(item => {
-            if (item.neg !== this.neg) return
-            this.appendList.push({
-                'type': "favorite",
-                'name': ["favorite", item.name/*, item.type*/],
-                "icon": "favorite",
-                "key": item.key,
-                'dataKey': 'favorite.' + item.key,
-                "children": [],
-            })
-        })
-        /*temp.forEach(item => {
-            this.appendList.push({
-                'type': "history",
-                'name': ["history", item.name, item.type],
-                "icon": "history",
-                "key": item.key,
-                'dataKey': 'history.' + item.key,
-                "children": [],
-            })
-        })*/
-        this.$nextTick(() => {
-            this.initSortable()
-            // autoSizeInput(this.$refs.promptTagAppend)
-            let times = [1000, 3000, 5000, 10000]
-            let isBind = false
-            times.forEach((time) => {
-                if (isBind) return
-                setTimeout(() => {
-                    if (isBind) return
-                    if (typeof addAutocompleteToArea !== 'function') return
-                    if (typeof TAC_CFG !== 'object') return
-                    if (!TAC_CFG) return
-                    if (!TAC_CFG['activeIn']) return
-                    isBind = true
-                    addAutocompleteToArea(this.$refs.promptTagAppend)
-                }, time)
-            })
-            this.init()
-        })
-        window.addEventListener('resize', this.onResize)
     },
     watch: {
         loras: {
@@ -588,6 +501,27 @@ export default {
             immediate: false,
         },
     },
+    mounted() {
+        this.$nextTick(() => {
+            this.initSortable()
+            // autoSizeInput(this.$refs.promptTagAppend)
+            let times = [1000, 3000, 5000, 10000]
+            let isBind = false
+            times.forEach((time) => {
+                if (isBind) return
+                setTimeout(() => {
+                    if (isBind) return
+                    if (typeof addAutocompleteToArea !== 'function') return
+                    if (typeof TAC_CFG !== 'object') return
+                    if (!TAC_CFG) return
+                    if (!TAC_CFG['activeIn']) return
+                    isBind = true
+                    addAutocompleteToArea(this.$refs.promptTagAppend)
+                }, time)
+            })
+            this.init()
+        })
+    },
     methods: {
         init() {
             this.tags = []
@@ -595,7 +529,7 @@ export default {
             // this.textarea.removeEventListener('change', this.onTextareaChange)
             // this.textarea.addEventListener('change', this.onTextareaChange)
         },
-        async onTextareaChange(event) {
+        onTextareaChange(event) {
             const autocompleteResults = this.textarea.parentElement.getElementsByClassName('autocompleteResults')
             if (autocompleteResults.length > 0 && autocompleteResults[0].style.display !== 'none') {
                 return
@@ -647,29 +581,16 @@ export default {
         },
         copy(text) {
             this.$copyText(text).then(() => {
-                this.$toastr.success("success!")
+                this.$toastr.success(this.getLang('success'))
             }).catch(() => {
-                this.$toastr.error("error!")
+                this.$toastr.error(this.getLang('failed'))
             })
         },
-        onCopyAllTagsClick() {
-            this.copy(this.prompt)
-        },
-        appendListItemName(item) {
-            let names = []
-            if (typeof item.name === "object") {
-                for (let name of item.name) {
-                    names.push(this.getLang(name))
-                }
-            } else {
-                names = [this.getLang(item.name)]
-            }
-            return names.join(' / ')
-        },
-        genPrompt() {
+        genPrompt(tags = null, ignoreDisabled = false) {
+            tags = tags || this.tags
             let prompts = []
-            let length = this.tags.length
-            this.tags.forEach((tag, index) => {
+            let length = tags.length
+            tags.forEach((tag, index) => {
                 let prompt = ''
                 if (typeof tag['type'] === 'string' && tag.type === 'wrap') {
                     prompt = "\n"
@@ -691,15 +612,15 @@ export default {
                             tag.localValue = tag.localValue.replace(common.weightNumRegex, '$1:' + tag.weightNum)
                         }
                     }
-                    if (tag.disabled) return
+                    if (tag.disabled && !ignoreDisabled) return
 
                     let splitSymbol = ',' + (this.autoRemoveSpace ? '' : ' ')
 
                     let nextTag = null
                     let nextIsWarp = false
                     // 获取下一个按钮
-                    if (index + 1 < this.tags.length) {
-                        nextTag = this.tags[index + 1]
+                    if (index + 1 < length) {
+                        nextTag = tags[index + 1]
                         if (typeof nextTag['type'] === 'string' && nextTag.type === 'wrap') {
                             nextIsWarp = true
                         }
@@ -765,200 +686,66 @@ export default {
                 }).catch(err => {
                 })
             }
-        },
-        _setTagClass(tag) {
-            tag.isLora = false
-            tag.loraExists = false
-            tag.isLyco = false
-            tag.lycoExists = false
-            tag.isEmbedding = false
-
-            if (typeof tag['type'] === 'string' && tag.type === 'wrap') {
-            } else {
-                // 判断是否lora
-                const match = tag.value.match(common.loraRegex)
-                if (match) {
-                    tag.isLora = true
-                    const loraName = this.loraExists(match[1])
-                    if (loraName !== false) {
-                        tag.loraExists = true
-                        tag.loraName = loraName
-                    }
+            this.$nextTick(() => {
+                for (let i = 0; i < this.$refs.promptTagsList.children.length; i++) {
+                    let tag = this.$refs.promptTagsList.children[i]
+                    if (!tag.classList.contains('prompt-tag')) continue
+                    let id = tag.getAttribute('data-id')
+                    let wrap = this.$refs.promptTagWrap.find(wrap => {
+                        return wrap.getAttribute('data-id') === id
+                    })
+                    if (wrap) tag.parentNode.insertBefore(wrap, tag.nextElementSibling)
                 }
-
-                if (!tag.isLora) {
-                    // 判断是否lyco
-                    const match = tag.value.match(common.lycoRegex)
-                    if (match) {
-                        tag.isLyco = true
-                        const lycoName = this.lycoExists(match[1])
-                        if (lycoName !== false) {
-                            tag.lycoExists = true
-                            tag.lycoName = lycoName
-                        }
-                    }
-                }
-
-                if (!tag.isLora && !tag.isLyco) {
-                    // 判断是否embedding
-                    const embeddingName = this.embeddingExists(tag.value)
-                    if (embeddingName !== false) {
-                        tag.isEmbedding = true
-                        tag.value = embeddingName
-                    }
-                }
-            }
-
-            let classes = ['prompt-tag-value']
-            if (tag.isLora) {
-                classes.push('lora-tag')
-                if (!tag.loraExists) {
-                    classes.push('lora-not-exists')
-                }
-            } else if (tag.isLyco) {
-                classes.push('lyco-tag')
-                if (!tag.lycoExists) {
-                    classes.push('lyco-not-exists')
-                }
-            } else if (tag.isEmbedding) {
-                classes.push('embedding-tag')
-            } else if (this.neg) {
-                classes.push('neg-tag')
-            }
-
-            tag.classes = classes
-            return classes
-        },
-        renderTag(index) {
-            let value = this.tags[index].value
-            value = common.escapeHtml(value)
-            if (this.tags[index].incWeight > 0) {
-                value = common.setLayers(value, 0, '(', ')')
-                value = '<div class="character">' + value + '</div>'
-                let start = '<div class="weight-character">' + '('.repeat(this.tags[index].incWeight) + '</div>'
-                let end = '<div class="weight-character">' + ')'.repeat(this.tags[index].incWeight) + '</div>'
-                value = start + value + end
-            } else if (this.tags[index].decWeight > 0) {
-                value = common.setLayers(value, 0, '[', ']')
-                value = '<div class="character">' + value + '</div>'
-                let start = '<div class="weight-character">' + '['.repeat(this.tags[index].decWeight) + '</div>'
-                let end = '<div class="weight-character">' + ']'.repeat(this.tags[index].decWeight) + '</div>'
-                value = start + value + end
-            } else {
-                value = '<div class="character">' + value + '</div>'
-            }
-            return value
+            })
         },
         onResize() {
             this.tags.forEach(tag => {
                 this._setTagHeight(tag)
             })
         },
-        _setTag(tag) {
-            if (typeof tag['type'] === 'string' && tag.type === 'wrap') {
-                tag.weightNum = 1
-                tag.incWeight = 0
-                tag.decWeight = 0
-            } else {
-                tag.weightNum = common.getTagWeightNum(tag.value)
-                tag.weightNum = tag.weightNum <= 0 ? 1 : tag.weightNum
-                tag.incWeight = common.getTagIncWeight(tag.value)
-                tag.decWeight = common.getTagDecWeight(tag.value)
-                // const bracket = common.hasBrackets(tag.value)
-            }
-            this._setTagClass(tag)
-            this.$nextTick(() => {
-                this._setTagHeight(tag)
-            })
-        },
-        _setTagHeight(tag) {
-            setTimeout(() => {
-                let $tag = this.$refs['promptTagValue-' + tag.id][0]
-                let height = $tag.offsetHeight
-                $tag.parentNode.style.height = height + 'px'
-                if (this.$refs['promptTagEdit-' + tag.id]) {
-                    this.$refs['promptTagEdit-' + tag.id][0].style.height = height + 'px'
-                }
-                if (this.$refs['promptTagDelete-' + tag.id]) {
-                    this.$refs['promptTagDelete-' + tag.id][0].style.height = height + 'px'
-                }
-            }, 300)
-        },
-        _appendTag(value, localValue = '', disabled = false, index = -1, type = 'text') {
-            // 唯一数：当前时间戳+随机数
-            const id = Date.now() + (Math.random() * 1000000).toFixed(0)
-            let tag = {
-                id,
-                value,
-                localValue,
-                disabled,
-                type
-            }
-            this._setTag(tag)
-            // value           = common.setLayers(value, 0, '(', ')')
-            // value           = common.setLayers(value, 0, '[', ']')
-            if (index >= 0) {
-                // 插入到指定位置
-                this.tags.splice(index, 0, tag)
-            } else {
-                index = this.tags.push(tag)
-            }
-            this.$nextTick(() => {
-                if (this.$refs['promptTagEdit-' + id]) autoSizeInput(this.$refs['promptTagEdit-' + id][0])
-            })
-            return index - 1
-        },
-        _appendTagByList() {
-            if (this.appendListSelected === null) return
-            const appendItem = this.appendList[this.appendListSelected]
-            let appendChildItem = null
-            if (appendItem.children.length > 0) {
-                if (this.appendListChildSelected !== null) {
-                    // 有子项并且选中了子项
-                    appendChildItem = appendItem.children[this.appendListChildSelected]
-                }
-            } else {
-                // 没有子项
-            }
-            let appendTags = []
-            switch (appendItem.type) {
-                case 'wrap':
-                    appendTags.push({
-                        value: "\n",
-                        localValue: "\n",
-                        disabled: false,
-                        type: 'wrap'
-                    })
-                    break
-                case 'lora':
-                    break
-                case 'favorite':
-                case 'history':
-                    if (appendChildItem) {
-                        appendChildItem.tags.forEach(tag => {
-                            appendTags.push({
-                                value: tag.value,
-                                localValue: tag.localValue,
-                                disabled: tag.disabled,
-                                type: tag.type || 'text'
-                            })
-                        })
-                    }
-                    break
-            }
-            if (appendTags.length <= 0) return
-            appendTags.forEach(tag => {
-                this._appendTag(tag.value, tag.localValue, tag.disabled, -1, tag.type)
-            })
-            this.updateTags()
-        },
         initSortable() {
-            Sortable.create(this.$refs.promptTagsList, {
+            this.sortable = Sortable.create(this.$refs.promptTagsList, {
                 animation: 150,
                 handle: '.prompt-tag-value',
                 draggable: ".prompt-tag",
                 onEnd: (env) => {
-                    let oldIndex = env.oldDraggableIndex
+                    if (this.dropTags.length) {
+                        let current = env.item
+                        let currentId = current.getAttribute('data-id')
+                        let dropTags = this._getDropTagsEle()
+                        let currentIndex = dropTags.findIndex(tag => {
+                            return tag.getAttribute('data-id') === currentId
+                        })
+                        let beforeTags = dropTags.slice(0, currentIndex)
+                        let afterTags = dropTags.slice(currentIndex + 1).reverse()
+                        // 移动 dropTags 中的html节点按照原始顺序到current的周围
+                        beforeTags.forEach(tag => {
+                            common.insertBefore(tag, current)
+                        })
+                        afterTags.forEach(tag => {
+                            common.insertAfter(tag, current)
+                        })
+                    }
+
+                    this._dropOver()
+                    this.droping = false
+
+                    let newIndexes = []
+                    let $tags = {}
+                    for (let i = 0; i < this.$refs.promptTagsList.children.length; i++) {
+                        let tag = this.$refs.promptTagsList.children[i]
+                        if (!tag.classList.contains('prompt-tag')) continue
+                        let id = tag.getAttribute('data-id')
+                        newIndexes.push(id)
+                        $tags[id] = tag
+                    }
+                    this.tags = this.tags.sort((a, b) => {
+                        return newIndexes.indexOf(a.id) - newIndexes.indexOf(b.id)
+                    })
+                    this.$forceUpdate()
+                    this.updateTags()
+
+                    /*let oldIndex = env.oldDraggableIndex
                     let newIndex = env.newDraggableIndex
                     if (oldIndex === newIndex) {
                         if (env.oldIndex !== env.newIndex) {
@@ -974,554 +761,49 @@ export default {
                     tags.splice(newIndex, 0, tags.splice(oldIndex, 1)[0])
 
                     this.tags = tags
-                    this.updateTags()
                     this.$forceUpdate()
+                    this.updateTags()*/
                 },
                 onChoose: (env) => {
+                    console.log(env)
+                    if (this.dropTags.length) {
+                        let current = env.item
+                        let currentId = current.getAttribute('data-id')
+                        let dropTags = this._getDropTagsEle()
+                        dropTags.forEach(tag => {
+                            if (tag.getAttribute('data-id') === currentId) return
+                            tag.style.display = 'block'
+                            tag.style.transition = 'transform 0.2s'
+                            tag.style.transform = 'scale(0)'
+                            setTimeout(() => {
+                                tag.style.transition = ''
+                                tag.style.transform = ''
+                                tag.style.display = 'none'
+                            }, 300)
+                        })
+                    }
                     this.editing = {}
-                    this.dropTag = this.tags[env.oldDraggableIndex]
+                    this.droping = true
                 },
                 onUnchoose: (env) => {
-                    this.dropTag = null
+                    this.droping = null
+                    if (this.dropTags.length) {
+                        let current = env.item
+                        let currentId = current.getAttribute('data-id')
+                        let dropTags = this._getDropTagsEle()
+                        dropTags.forEach(tag => {
+                            if (tag.getAttribute('data-id') === currentId) return
+                            tag.style.display = ''
+                        })
+                    }
                 },
-            })
-        },
-        getAutocompleteResults() {
-            if (!this.autocompleteResults) {
-                const autocompleteResults = this.$refs.promptTagAppend.parentElement.querySelector('.autocompleteResults')
-                if (autocompleteResults) {
-                    this.autocompleteResults = autocompleteResults
-                    // 增加mousemove事件
-                    if (this.autocompleteResults.getAttribute('data-mousemove') !== 'true') {
-                        this.autocompleteResults.setAttribute('data-mousemove', 'true')
-                        this.autocompleteResults.addEventListener('mousemove', (e) => {
-                            this.bindAutocompleteResultsClick()
-                        })
-                    }
-                }
-            }
-            return this.autocompleteResults
-        },
-        removeAutocompleteResultsSelected() {
-            const autocompleteResults = this.getAutocompleteResults()
-            if (!autocompleteResults) return false
-            autocompleteResults.querySelectorAll('li').forEach(li => {
-                li.classList.remove('selected')
-            })
-            return true
-        },
-        getAutocompleteResultsSelected() {
-            const autocompleteResults = this.getAutocompleteResults()
-            if (!autocompleteResults) return null
-            const el = autocompleteResults.querySelector('li.selected')
-            if (!el) return null
-            return el
-        },
-        getAutocompleteResultsSelectedText(el = null) {
-            if (!el) {
-                el = this.getAutocompleteResultsSelected()
-                if (!el) return null
-            }
-            const $acListItem = el.querySelector('.acListItem')
-            const text = $acListItem.innerText
-            const match = text.match(/\[(.+?)\]/)
-            if (!match) return null
-            return match[1]
-        },
-        bindAutocompleteResultsClick() {
-            this.getAutocompleteResults()
-            if (!this.autocompleteResults) return
-            // 获取列表
-            let lis = this.autocompleteResults.querySelectorAll('li')
-            // 给每个li绑定点击事件
-            lis.forEach(li => {
-                // 判断是否已经绑定过
-                if (li.getAttribute('physton-on-clicked') === 'true') return
-                li.setAttribute('physton-on-clicked', 'true')
-                li.addEventListener('click', () => {
-                    this.onAutocompleteResultsClicked(li)
-                })
-            })
-        },
-        onAutocompleteResultsClicked(li) {
-            const text = this.getAutocompleteResultsSelectedText(li)
-            setTimeout(() => {
-                let tags = this.$refs.promptTagAppend.value.replace(/,\s*$/, '')
-                this.$refs.promptTagAppend.value = ''
-                if (common.hasBrackets(tags)) {
-                    tags = common.replaceBrackets(tags)
-                }
-                this._appendTag(tags, text)
-                this.updateTags()
-            }, 300)
-        },
-        onAppendTagFocus(e) {
-            if (e.target.value === '' || e.target.value.trim() === '') {
-                this.appendListStyle = {
-                    top: e.target.offsetTop + e.target.offsetHeight + 'px',
-                    left: e.target.offsetLeft + 'px',
-                }
-                this.appendListSelected = null
-                this.appendListChildSelected = null
-                this.showAppendList = true
-                let dataKeys = []
-                this.appendList.forEach(item => {
-                    if (typeof item['dataKey'] === 'string') {
-                        dataKeys.push(item['dataKey'])
-                    }
-                })
-                this.gradioAPI.getDatas(dataKeys).then(res => {
-                    this.appendList.forEach(item => {
-                        if (typeof item['dataKey'] !== 'string') return
-                        item.children = res[item['dataKey']] || []
-                        // 反转
-                        item.children.reverse()
-                    })
-                })
-                /*this.gradioAPI.getFavorites(this.favoriteKey).then(res => {
-                    this.appendList.forEach(item => {
-                        if (item.type !== 'favorite') return
-                        item.children = res
-                    })
-                })
-                this.gradioAPI.getHistories(this.historyKey).then(res => {
-                    this.appendList.forEach(item => {
-                        if (item.type !== 'history') return
-                        item.children = res
-                    })
-                })*/
-            }
-            this._setTextareaFocus()
-        },
-        onAppendTagBlur(e) {
-            setTimeout(() => {
-                this.showAppendList = false
-            }, 300)
-        },
-        selectAppendList(down = true) {
-            if (this.appendList.length === 0) return
-            if (this.appendListSelected === null) {
-                this.appendListSelected = 0
-            } else {
-                if (down) {
-                    this.appendListSelected++
-                    if (this.appendListSelected >= this.appendList.length) {
-                        this.appendListSelected = 0
-                    }
-                } else {
-                    this.appendListSelected--
-                    if (this.appendListSelected < 0) {
-                        this.appendListSelected = this.appendList.length - 1
-                    }
-                }
-            }
-            this.appendListChildSelected = null
-        },
-        selectAppendListChild(down = true) {
-            if (this.appendList.length === 0) return
-            if (this.appendListSelected === null) return
-            if (this.appendList[this.appendListSelected].children.length === 0) return
-            if (this.appendListChildSelected === null) {
-                this.appendListChildSelected = 0
-            } else {
-                if (down) {
-                    this.appendListChildSelected++
-                    if (this.appendListChildSelected >= this.appendList[this.appendListSelected].children.length) {
-                        this.appendListChildSelected = 0
-                    }
-                } else {
-                    this.appendListChildSelected--
-                    if (this.appendListChildSelected < 0) {
-                        this.appendListChildSelected = this.appendList[this.appendListSelected].children.length - 1
-                    }
-                }
-            }
-            this.scrollAppendListChild()
-        },
-        scrollAppendListChild() {
-            if (this.appendListSelected === null) return
-            if (this.appendListChildSelected === 0 || this.appendListChildSelected === null) {
-                this.$refs.promptAppendListChildren[this.appendListSelected].scrollTop = 0
-            } else {
-                this.$refs.promptAppendListChild[this.appendListChildSelected].scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                })
-            }
-        },
-        onAppendTagKeyDown(e, localValue = null) {
-            if (e.keyCode === 38 || e.keyCode === 40) {
-            } else if (e.keyCode === 13) {
-                if (this.getAutocompleteResults() && this.autocompleteResults.style.display === 'block' && this.getAutocompleteResultsSelected()) {
-                    let text = this.getAutocompleteResultsSelectedText()
-                    setTimeout(() => {
-                        localValue = e.target.value
-                        if (text) {
-                            localValue = text
-                        } else {
-                            text = this.getAutocompleteResultsSelectedText()
-                            if (text) localValue = text
-                        }
-                        this.onAppendTagKeyDown(e, localValue)
-                    }, 300)
-                    return
-                }
-
-                let tags = e.target.value
-                e.target.value = ''
-                this.showAppendList = true
-                // [night light:magical forest: 5, 15]
-                if (localValue) {
-                    // 去除末尾的逗号
-                    tags = tags.replace(/,\s*$/, '')
-                    if (common.hasBrackets(tags)) {
-                        tags = common.replaceBrackets(tags)
-                    }
-                    this._appendTag(tags, localValue)
-                    this.updateTags()
-                } else {
-                    if (common.hasBrackets(tags)) {
-                        // 如果已经被英文括号括起来，那么就不需要再分词了
-                        tags = common.replaceBrackets(tags)
-                        tags = [tags]
-                    } else {
-                        tags = common.splitTags(tags)
-                    }
-                    let indexes = []
-                    tags.forEach(tag => {
-                        if (tag === "\n") {
-                            indexes.push(this._appendTag("\n", "\n", false, -1, 'wrap'))
-                        } else {
-                            indexes.push(this._appendTag(tag))
-                        }
-                    })
-                    this.updatePrompt() // 先更新再翻译
-                    if (this.autoTranslateToEnglish || this.autoTranslateToLocal) {
-                        this.$nextTick(() => {
-                            let useNetwork = !(this.tagCompleteFile && this.onlyCsvOnAuto)
-                            if (this.autoTranslateToEnglish) {
-                                // 如果开启了自动翻译到英语，那么就自动翻译
-                                this.translates(indexes, false, useNetwork).finally(() => {
-                                    this.updateTags()
-                                })
-                            } else if (this.autoTranslateToLocal) {
-                                // 如果开启了自动翻译到本地语言，那么就自动翻译
-                                this.translates(indexes, true, useNetwork).finally(() => {
-                                    this.updateTags()
-                                })
-                            }
-                        })
-                    } else {
-                        this.updateTags()
-                    }
-                }
-            } else {
-                // 不是上下键，也不是回车
-                this.removeAutocompleteResultsSelected()
-            }
-        },
-        onAppendTagKeyUp(e) {
-            if (e.target.value === '' || e.target.value.trim() === '') {
-                e.target.value = ''
-                this.showAppendList = true
-
-                if (e.keyCode === 38 || e.keyCode === 40) {
-                    // 如果是上下键
-                    if (this.appendListChildSelected === null) {
-                        this.selectAppendList(e.keyCode === 40)
-                    } else {
-                        this.selectAppendListChild(e.keyCode === 40)
-                    }
-                } else if (e.keyCode === 37 || e.keyCode === 39) {
-                    // 如果是左右键
-                    if (this.appendListSelected !== null) {
-                        if (e.keyCode === 37) {
-                            this.appendListChildSelected = null
-                            this.scrollAppendListChild()
-                        } else {
-                            if (this.appendList[this.appendListSelected].children.length === 0) {
-                                this.appendListChildSelected = null
-                            } else {
-                                this.appendListChildSelected = 0
-                                this.scrollAppendListChild()
-                            }
-                        }
-                    }
-                } else if (e.keyCode === 13) {
-                    // 如果是回车键
-                    this._appendTagByList()
-                    this.scrollAppendListChild()
-                    this.appendListSelected = null
-                    this.appendListChildSelected = null
-                }
-            } else {
-                this.showAppendList = false
-            }
-        },
-        onAppendGroupClick(index, childIndex, e) {
-            if (index === null) return
-            this.appendListSelected = index
-            if (childIndex === null) {
-                // 如果是点击的是父级
-                if (this.appendList[this.appendListSelected].children.length > 0) return
-            } else {
-                this.appendListChildSelected = childIndex
-            }
-            this._appendTagByList()
-        },
-        onAppendListChildMouseLeave(index, childIndex, e) {
-            this.appendListSelected = null
-            this.appendListChildSelected = null
-        },
-        onAppendListChildMouseEnter(index, childIndex, e) {
-            this.appendListSelected = index
-            this.appendListChildSelected = childIndex
-        },
-        onTagMouseEnter(index) {
-            if (!this.tags[index]) return false
-            let tag = this.tags[index]
-            tag.isFavorite = this.isFavorite(index)
-        },
-        isFavorite(index) {
-            if (!this.tags[index]) return false
-            let tag = this.tags[index]
-            if (typeof window.phystonPromptfavorites === 'object') {
-                for (const group of window.phystonPromptfavorites) {
-                    if (group.key !== this.favoriteKey) continue
-                    for (const favorite of group.list) {
-                        if (favorite.tags.length !== 1) continue
-                        if (favorite.tags[0].value === tag.value) return favorite.id
-                    }
-                }
-            }
-            return false
-        },
-        onTagClick(index) {
-            if (this.tagClickTimeId) clearTimeout(this.tagClickTimeId)
-            this.tagClickTimeId = setTimeout(() => {
-                this.editing = {}
-                this.editing[this.tags[index].id] = true
-                this.$forceUpdate()
-                this.$nextTick(() => {
-                    const input = this.$refs['promptTagEdit-' + this.tags[index].id][0]
-                    input.focus()
-                    input.dispatchEvent(new Event('input'))
-                    // input.select()
-                })
-                clearTimeout(this.tagClickTimeId)
-            }, 250)
-        },
-        onTagDblclick(index) {
-            clearTimeout(this.tagClickTimeId)
-            this.onDisabledTagClick(index)
-        },
-        onTagInputBlur(index) {
-            this.editing[this.tags[index].id] = false
-        },
-        onTagInputKeyDown(index, e) {
-            if (e.keyCode === 13) {
-                this.editing[this.tags[index].id] = false
-                if (this.tags[index].value !== e.target.value) {
-                    this.tags[index].value = e.target.value
-                    this._setTag(this.tags[index])
-                    this.updateTags()
-                }
-            }
-        },
-        onTagInputChange(index, e) {
-            if (this.tags[index].value === e.target.value) return
-            this.tags[index].value = e.target.value
-            this._setTag(this.tags[index])
-            this.updateTags()
-        },
-        onTagWeightNumChange(index, e) {
-            e = typeof e === "number" || typeof a === "string" ? e : e.target.value
-            if (this.tags[index].weightNum == e) return
-            let weightNum = e
-            let value = this.tags[index].value
-            let localValue = this.tags[index].localValue
-            if (weightNum > 0) {
-                if (weightNum === 1) {
-                    // 如果权重数是1，那么就去掉权重数
-                    const bracket = common.hasBrackets(value)
-                    if (bracket[0] === '(' && bracket[1] === ')') {
-                        // 移除括号
-                        value = common.setLayers(value, 0, bracket[0], bracket[1])
-                        if (localValue !== '') localValue = common.setLayers(localValue, 0, bracket[0], bracket[1])
-                    } else {
-                        // 不移除括号
-                    }
-                    // 移除权重数
-                    value = value.replace(common.weightNumRegex, '$1')
-                    if (localValue !== '') localValue = localValue.replace(common.weightNumRegex, '$1')
-                } else {
-                    // 如果原来没有权重数，那么就加上权重数
-                    if (!common.weightNumRegex.test(value)) {
-                        // 如果原来有括号，就要加到括号内
-                        let bracket = common.hasBrackets(value)
-                        if (bracket) {
-                            value = common.setLayers(value, 1, bracket[0], bracket[1], ':' + weightNum)
-                            if (localValue !== '') localValue = common.setLayers(localValue, 1, bracket[0], bracket[1], ':' + weightNum)
-                        } else {
-                            value = value + ':' + weightNum
-                            if (localValue !== '') localValue = localValue + ':' + weightNum
-                        }
-                    }
-                    // 如果原来没有括号() [] {} <>，那么就加上括号
-                    if (!common.hasBrackets(value)) {
-                        value = common.setLayers(value, 1, '(', ')')
-                        if (localValue !== '') localValue = common.setLayers(localValue, 1, '(', ')')
-                    }
-                }
-                if (value !== this.tags[index].value) {
-                    this.tags[index].value = value
-                    if (localValue !== '') this.tags[index].localValue = localValue
-                    this._setTag(this.tags[index])
-                }
-            } else {
-                // 如果原来的括号是<>，那么最小权重数只能是0.1
-                const bracket = common.hasBrackets(value)
-                if (bracket[0] === '<' && bracket[1] === '>') {
-                    weightNum = 0.1
-                } else {
-                    if (this.autoKeepWeightZero) {
-                        // 保留权重数
-                        this.tags[index].value = value.replace(common.weightNumRegex, '$1:0')
-                        if (localValue !== '') this.tags[index].localValue = this.tags[index].localValue.replace(common.weightNumRegex, '$1:0')
-                    } else {
-                        // 移除权重数
-                        this.tags[index].value = value.replace(common.weightNumRegex, '$1')
-                        if (localValue !== '') this.tags[index].localValue = this.tags[index].localValue.replace(common.weightNumRegex, '$1')
-                    }
-                }
-            }
-            this.tags[index].weightNum = weightNum
-            this.updateTags()
-        },
-        onDeleteTagClick(index) {
-            this.tags.splice(index, 1)
-            this.updateTags()
-        },
-        onDeleteAllTagsClick() {
-            if (!confirm(this.getLang('delete_all_keywords_confirm'))) return
-            this.tags = []
-            this.updateTags()
-        },
-        onFavoriteTagClick(index) {
-            if (!this.tags[index]) return
-            let tag = this.tags[index]
-            let favoriteId = this.isFavorite(index)
-            if (!favoriteId) {
-                // 收藏
-                this.gradioAPI.pushFavorite(this.favoriteKey, [tag], tag.value, tag.localValue === '' ? tag.value : tag.localValue).then(res => {
-                    if (res) {
-                        this.tags[index].isFavorite = true
-                        this.$emit('refreshFavorites', this.favoriteKey)
-                    }
-                })
-            } else {
-                // 取消收藏
-                this.gradioAPI.unFavorite(this.favoriteKey, favoriteId).then(res => {
-                    if (res) {
-                        this.tags[index].isFavorite = false
-                        this.$emit('refreshFavorites', this.favoriteKey)
-                    }
-                })
-            }
-        },
-        onDisabledTagClick(index) {
-            this.tags[index].disabled = !this.tags[index].disabled
-            this.updateTags()
-        },
-        onIncWeightClick(index, num) {
-            let value = this.tags[index].value
-            let localValue = this.tags[index].localValue
-            value = common.setLayers(value, 0, '[', ']')
-            if (localValue !== '') localValue = common.setLayers(localValue, 0, '[', ']')
-            let incWeight = this.tags[index].incWeight
-            incWeight += num
-            if (incWeight < 0) incWeight = 0
-            this.tags[index].incWeight = incWeight
-            this.tags[index].decWeight = 0
-            value = common.setLayers(value, incWeight, '(', ')')
-            if (localValue !== '') localValue = common.setLayers(localValue, incWeight, '(', ')')
-            this.tags[index].value = value
-            if (localValue !== '') this.tags[index].localValue = localValue
-            this.updateTags()
-        },
-        onDecWeightClick(index, num) {
-            let value = this.tags[index].value
-            let localValue = this.tags[index].localValue
-            value = common.setLayers(value, 0, '(', ')')
-            if (localValue !== '') localValue = common.setLayers(localValue, 0, '(', ')')
-            let decWeight = this.tags[index].decWeight
-            decWeight += num
-            if (decWeight < 0) decWeight = 0
-            this.tags[index].incWeight = 0
-            this.tags[index].decWeight = decWeight
-            value = common.setLayers(value, decWeight, '[', ']')
-            if (localValue !== '') localValue = common.setLayers(localValue, decWeight, '[', ']')
-            this.tags[index].value = value
-            if (localValue !== '') this.tags[index].localValue = localValue
-            this.updateTags()
-        },
-        onWrapTagClick(index) {
-            let wrapIndex = this._appendTag("\n", "\n", false, -1, 'wrap')
-            let wrapTag = this.tags[wrapIndex]
-            // 移动到当前标签的下面
-            this.tags.splice(wrapIndex, 1);
-            // 然后将 'c' 插入到 'e' 后面
-            this.tags.splice(index + 1, 0, wrapTag);
-            this.updateTags()
-        },
-        onTranslateToLocalClick(index) {
-            if (this.loading[this.tags[index].id + '_local']) return
-            this.translates([index], true, true).finally(() => {
-                this.updateTags()
-            })
-        },
-        onTranslateToEnglishClick(index) {
-            if (this.loading[this.tags[index].id + '_en']) return
-            this.translates([index], false, true).finally(() => {
-                this.updateTags()
-            })
-        },
-        onTranslatesToLocalClick() {
-            if (this.tags.length === 0) return // 没有关键词需要翻译
-            if (this.loading['all_local']) {
-                // 正在翻译中，取消翻译
-                this.cancelMultiTranslate = true
-                this.loading['all_local'] = false
-                return
-            }
-            this.loading['all_local'] = true
-            let tagIndexes = []
-            for (const index in this.tags) {
-                if (this.tags[index].type && this.tags[index].type !== 'text') continue
-                tagIndexes.push(index)
-            }
-            return this.translates(tagIndexes, true, true).finally(() => {
-                this.loading['all_local'] = false
-                this.updateTags()
-            })
-        },
-        onTranslatesToEnglishClick() {
-            if (this.tags.length === 0) return // 没有关键词需要翻译
-            if (this.loading['all_en']) {
-                // 正在翻译中，取消翻译
-                this.cancelMultiTranslate = true
-                this.loading['all_en'] = false
-                return
-            }
-            this.loading['all_en'] = true
-            let tagIndexes = []
-            for (const index in this.tags) {
-                if (this.tags[index].type && this.tags[index].type !== 'text') continue
-                tagIndexes.push(index)
-            }
-            this.translates(tagIndexes, false, true).finally(() => {
-                this.loading['all_en'] = false
-                this.updateTags()
+                /*onSpill: function (evt) {
+                    evt.item // The spilled item
+                }*/
+                /*multiDrag: true, // Enable the plugin
+                selectedClass: "sortable-selected", // Class name for selected item
+                multiDragKey: 'SHIFT', // Key that must be down for items to be selected
+                avoidImplicitDeselect: false,*/
             })
         },
         useHistory(history) {
@@ -1537,21 +819,6 @@ export default {
         onPromptMainClick() {
             this.onTextareaChange(true)
             this._setTextareaFocus()
-        },
-        onUnfoldClick() {
-            if (this.hidePanel) {
-                this.$nextTick(() => {
-                    this.onResize()
-                })
-            }
-            this.$emit("update:hidePanel", !this.hidePanel)
-        },
-        _setTagById(id, value = null, localValue = null) {
-            let tag = this.tags.find(tag => tag.id === id)
-            if (!tag) return false
-            if (value !== null) tag.value = value
-            if (localValue !== null) tag.localValue = localValue
-            return tag
         },
         translates(indexes, toLocal = false, useNetwork = true) {
             return new Promise((resolve, reject) => {
