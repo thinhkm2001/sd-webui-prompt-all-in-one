@@ -91,7 +91,18 @@
                 "packages_installing": "开始安装......如需查询详细安装日志，请前往WebUI控制台查看。安装完成后，本窗口将自动关闭！",
                 "today_not_show": "今日不再显示本窗口",
                 "free": "免费",
-                "apply_for_free": "申请后免费使用"
+                "apply_for_free": "申请后免费使用",
+                "chatgpt_prompts_preset": "StableDiffusion是一款利用深度学习的文生图模型，支持通过使用提示词来产生新的图像，描述要包含或省略的元素。\n我在这里引入StableDiffusion算法中的Prompt概念，又被称为提示符。\n下面的prompt是用来指导AI绘画模型创作图像的。它们包含了图像的各种细节，如人物的外观、背景、颜色和光线效果，以及图像的主题和风格。这些prompt的格式经常包含括号内的加权数字，用于指定某些细节的重要性或强调。例如，\"(masterpiece:1.5)\"表示作品质量是非常重要的，多个括号也有类似作用。此外，如果使用中括号，如\"{blue hair:white hair:0.3}\"，这代表将蓝发和白发加以融合，蓝发占比为0.3。\n以下是用prompt帮助AI模型生成图像的例子：masterpiece,(bestquality),highlydetailed,ultra-detailed,cold,solo,(1girl),(detailedeyes),(shinegoldeneyes),(longliverhair),expressionless,(long sleeves),(puffy sleeves),(white wings),shinehalo,(heavymetal:1.2),(metaljewelry),cross-lacedfootwear (chain),(Whitedoves:1.2)\n\n仿照例子，给出一套详细描述以下内容的prompt。直接开始给出prompt不需要用自然语言描述：",
+                "use_chatgpt_gen_prompts": "使用ChatGPT生成Prompt",
+                "input_image_desc": "请输入图片描述，例如：一只猫坐在建筑物顶部，非常高清、非常真实的照片。",
+                "api_config": "API配置",
+                "image_desc": "图片描述",
+                "preset": "预设",
+                "ai_one": "发给AI的第一句话",
+                "ai_two": "发给AI的第二句话",
+                "restore_to_default": "恢复到系统默认",
+                "generate": "生成",
+                "generate_result": "生成结果"
             }
         },
         {
@@ -184,7 +195,18 @@
                 "packages_installing": "開始安裝......如需查詢詳細安裝日誌，請前往WebUI控制台查看。安裝完成後，本窗口將自動關閉！",
                 "today_not_show": "今日不再顯示本窗口",
                 "free": "免費",
-                "apply_for_free": "申請後免費使用"
+                "apply_for_free": "申請後免費使用",
+                "chatgpt_prompts_preset": "StableDiffusion是一款利用深度學習的文生圖模型，支持通過使用提示詞來產生新的圖像，描述要包含或省略的元素。\n我在這裡引入StableDiffusion算法中的Prompt概念，又被稱為提示符。\n下面的prompt是用來指導AI繪畫模型創作圖像的。它們包含了圖像的各種細節，如人物的外觀、背景、顏色和光線效果，以及圖像的主題和風格。這些prompt的格式經常包含括號內的加權數字，用於指定某些細節的重要性或強調。例如，\"(masterpiece:1.5)\"表示作品質量是非常重要的，多個括號也有類似作用。此外，如果使用中括號，如\"{blue hair:white hair:0.3}\"，這代表將藍髮和白髮加以融合，藍髮佔比為0.3。\n以下是用prompt幫助AI模型生成圖像的例子：masterpiece,(bestquality),highlydetailed,ultra-detailed,cold,solo,(1girl),(detailedeyes),(shinegoldeneyes),(longliverhair),expressionless,(long sleeves),(puffy sleeves),(white wings),shinehalo,(heavymetal:1.2),(metaljewelry),cross-lacedfootwear (chain),(Whitedoves:1.2)\n仿照例子，給出一套詳細描述以下內容的prompt。直接開始給出prompt不需要用自然語言描述：",
+                "use_chatgpt_gen_prompts": "使用ChatGPT生成Prompt",
+                "input_image_desc": "請輸入圖片描述，例如：一隻貓坐在建築物頂部，非常高清、非常真實的照片。",
+                "api_config": "API配置",
+                "image_desc": "圖片描述",
+                "preset": "預設",
+                "ai_one": "發給AI的第一句話",
+                "ai_two": "發給AI的第二句話",
+                "restore_to_default": "恢復到系統默認",
+                "generate": "生成",
+                "generate_result": "生成結果"
             }
         },
         {
@@ -277,7 +299,18 @@
                 "packages_installing": "開始安裝......如需查詢詳細安裝日誌，請前往WebUI控制台查看。安裝完成後，本視窗將自動關閉！",
                 "today_not_show": "今日不再顯示本視窗",
                 "free": "免費",
-                "apply_for_free": "申請後免費使用"
+                "apply_for_free": "申請後免費使用",
+                "chatgpt_prompts_preset": "StableDiffusion是一款利用深度學習的文生圖模型，支持通過使用提示詞來產生新的圖像，描述要包含或省略的元素。\n我在這裡引入StableDiffusion算法中的Prompt概念，又被稱為提示符。\n下面的prompt是用來指導AI繪畫模型創作圖像的。它們包含了圖像的各種細節，如人物的外觀、背景、顏色和光線效果，以及圖像的主題和風格。這些prompt的格式經常包含括號內的加權數字，用於指定某些細節的重要性或強調。例如，\"(masterpiece:1.5)\"表示作品質量是非常重要的，多個括號也有類似作用。此外，如果使用中括號，如\"{blue hair:white hair:0.3}\"，這代表將藍髮和白髮加以融合，藍髮佔比為0.3。\n以下是用prompt幫助AI模型生成圖像的例子：masterpiece,(bestquality),highlydetailed,ultra-detailed,cold,solo,(1girl),(detailedeyes),(shinegoldeneyes),(longliverhair),expressionless,(long sleeves),(puffy sleeves),(white wings),shinehalo,(heavymetal:1.2),(metaljewelry),cross-lacedfootwear (chain),(Whitedoves:1.2)\n仿照例子，給出一套詳細描述以下內容的prompt。直接開始給出prompt不需要用自然語言描述：",
+                "use_chatgpt_gen_prompts": "使用ChatGPT生成Prompt",
+                "input_image_desc": "請輸入圖片描述，例如：一隻貓坐在建築物頂部，非常高清、非常真實的照片。",
+                "api_config": "API配置",
+                "image_desc": "圖片描述",
+                "preset": "預設",
+                "ai_one": "發給AI的第一句話",
+                "ai_two": "發給AI的第二句話",
+                "restore_to_default": "恢復到系統預設",
+                "generate": "生成",
+                "generate_result": "生成結果"
             }
         },
         {
@@ -370,7 +403,18 @@
                 "packages_installing": "Starting to install......If you need to check the detailed installation log, please go to the WebUI console to view it. After the installation is completed, this window will close automatically!",
                 "today_not_show": "Do not show this window today",
                 "free": "Free",
-                "apply_for_free": "Apply for free use"
+                "apply_for_free": "Apply for free use",
+                "chatgpt_prompts_preset": "StableDiffusion is a deep learning text-to-image model that generates images based on prompts. These prompts can specify the desired elements of the image, such as the appearance of characters, background, color and lighting effects, as well as the theme and style of the image. The prompts often contain weighted numbers in parentheses to indicate the importance or emphasis of certain details. For example, \"(masterpiece:1.5)\" indicates that the quality of the work is very important. Multiple parentheses also have similar effects. In addition, if square brackets are used, such as \"{blue hair:white hair:0.3}\", this represents the fusion of blue and white hair, with blue hair accounting for 0.3.\nHere is an example of using prompts to help an AI model generate an image: masterpiece,(bestquality),highlydetailed,ultra-detailed,cold,solo,(1girl),(detailedeyes),(shinegoldeneyes),(longliverhair),expressionless,(long sleeves),(puffy sleeves),(white wings),shinehalo,(heavymetal:1.2),(metaljewelry),cross-lacedfootwear (chain),(Whitedoves:1.2)\n\nFollowing the example, provide a set of prompts that detail the following content. Start the prompts directly without using natural language to describe them: ",
+                "use_chatgpt_gen_prompts": "Use ChatGPT to Generate Prompts",
+                "input_image_desc": "Please enter the image description, for example: a cat sitting on top of a building, a very high-definition, very authentic photo.",
+                "api_config": "API Configuration",
+                "image_desc": "Image Description",
+                "preset": "Preset",
+                "ai_one": "First Sentence Sent to AI",
+                "ai_two": "Second Sentence Sent to AI",
+                "restore_to_default": "Restore to System Default",
+                "generate": "Generate",
+                "generate_result": "Generate Result"
             }
         },
         {
@@ -476,7 +520,17 @@
                 "packages_installing": "بدء التثبيت ...... إذا كنت بحاجة إلى التحقق من سجل التثبيت التفصيلي ، فيرجى الانتقال إلى وحدة التحكم WebUI لعرضه. بعد الانتهاء من التثبيت ، سيتم إغلاق هذه النافذة تلقائيًا!",
                 "today_not_show": "لا تظهر هذه النافذة اليوم",
                 "free": "مجاني",
-                "apply_for_free": "التقديم للاستخدام المجاني"
+                "apply_for_free": "التقديم للاستخدام المجاني",
+                "use_chatgpt_gen_prompts": "استخدم ChatGPT لتوليد Prompts",
+                "input_image_desc": "يرجى إدخال وصف الصورة ، على سبيل المثال: قطة جالسة على سطح مبنى ، صورة عالية الدقة ومفصلة جدًا.",
+                "api_config": "تكوين API",
+                "image_desc": "وصف الصورة",
+                "preset": "مسبق التعيين",
+                "ai_one": "الجملة الأولى المرسلة إلى AI",
+                "ai_two": "الجملة الثانية المرسلة إلى AI",
+                "restore_to_default": "استعادة لافتراضيات النظام",
+                "generate": "توليد",
+                "generate_result": "نتيجة التوليد"
             }
         },
         {
@@ -669,7 +723,17 @@
                 "packages_installing": "Démarrage de l'installation ...... Si vous avez besoin de vérifier le journal d'installation détaillé, veuillez aller sur la console WebUI pour le consulter. Après l'installation, cette fenêtre se fermera automatiquement !",
                 "today_not_show": "Ne pas afficher cette fenêtre aujourd'hui",
                 "free": "Gratuit",
-                "apply_for_free": "Demande d'utilisation gratuite"
+                "apply_for_free": "Demande d'utilisation gratuite",
+                "use_chatgpt_gen_prompts": "Utiliser ChatGPT pour générer des prompts",
+                "input_image_desc": "Veuillez entrer la description de l'image, par exemple : un chat assis sur le toit d'un bâtiment, une photo très haute définition, très authentique.",
+                "api_config": "Configuration de l'API",
+                "image_desc": "Description de l'image",
+                "preset": "Préréglage",
+                "ai_one": "Première phrase envoyée à l'IA",
+                "ai_two": "Deuxième phrase envoyée à l'IA",
+                "restore_to_default": "Restaurer les paramètres par défaut du système",
+                "generate": "Générer",
+                "generate_result": "Résultat de la génération"
             }
         },
         {
@@ -777,7 +841,17 @@
                 "packages_installing": "Starte die Installation......Wenn Sie das detaillierte Installationsprotokoll überprüfen müssen, gehen Sie bitte zur WebUI-Konsole, um es anzuzeigen. Nachdem die Installation abgeschlossen ist, wird dieses Fenster automatisch geschlossen!",
                 "today_not_show": "Diese Fenster heute nicht anzeigen",
                 "free": "Kostenlos",
-                "apply_for_free": "Für kostenlose Nutzung bewerben"
+                "apply_for_free": "Für kostenlose Nutzung bewerben",
+                "use_chatgpt_gen_prompts": "Verwenden von ChatGPT zur Generierung von Prompts",
+                "input_image_desc": "Bitte geben Sie die Bildbeschreibung ein, zum Beispiel: Eine Katze sitzt auf dem Dach eines Gebäudes, ein sehr hochauflösendes, sehr authentisches Foto.",
+                "api_config": "API-Konfiguration",
+                "image_desc": "Bildbeschreibung",
+                "preset": "Voreinstellung",
+                "ai_one": "Erster Satz, der an die AI gesendet wird",
+                "ai_two": "Zweiter Satz, der an die AI gesendet wird",
+                "restore_to_default": "Auf werkseitige Voreinstellungen zurücksetzen",
+                "generate": "Generieren",
+                "generate_result": "Generiertes Ergebnis"
             }
         },
         {
@@ -935,7 +1009,17 @@
                 "packages_installing": "Avvio dell'installazione ...... Se hai bisogno di controllare il registro di installazione dettagliato, vai alla console WebUI per visualizzarlo. Dopo l'installazione, questa finestra verrà chiusa automaticamente!",
                 "today_not_show": "Non mostrare questa finestra oggi",
                 "free": "Gratuito",
-                "apply_for_free": "Richiedi l'uso gratuito"
+                "apply_for_free": "Richiedi l'uso gratuito",
+                "use_chatgpt_gen_prompts": "Utilizza ChatGPT per generare prompt",
+                "input_image_desc": "Inserisci la descrizione dell'immagine, ad esempio: un gatto seduto in cima a un edificio, una foto molto ad alta definizione e molto autentica.",
+                "api_config": "Configurazione API",
+                "image_desc": "Descrizione dell'immagine",
+                "preset": "Preimpostazioni",
+                "ai_one": "Prima frase inviata all'AI",
+                "ai_two": "Seconda frase inviata all'AI",
+                "restore_to_default": "Ripristina impostazioni predefinite di sistema",
+                "generate": "Genera",
+                "generate_result": "Risultato della generazione"
             }
         },
         {
@@ -1028,7 +1112,17 @@
                 "packages_installing": "インストールを開始します......詳細なインストールログを確認する必要がある場合は、WebUIコンソールに移動して表示してください。インストールが完了すると、このウィンドウは自動的に閉じられます！",
                 "today_not_show": "今日このウィンドウを表示しない",
                 "free": "無料",
-                "apply_for_free": "無料使用を申請する"
+                "apply_for_free": "無料使用を申請する",
+                "use_chatgpt_gen_prompts": "ChatGPTを使用してプロンプトを生成する",
+                "input_image_desc": "画像の説明を入力してください。たとえば、建物の屋上に座っている猫、非常に高精細で非常にリアルな写真など。",
+                "api_config": "API構成",
+                "image_desc": "画像の説明",
+                "preset": "プリセット",
+                "ai_one": "AIに送信される最初の文",
+                "ai_two": "AIに送信される2番目の文",
+                "restore_to_default": "システムデフォルトに復元",
+                "generate": "生成",
+                "generate_result": "生成結果"
             }
         },
         {
@@ -1146,7 +1240,17 @@
                 "packages_installing": "설치 시작 중 ...... 자세한 설치 로그를 확인해야하는 경우 WebUI 콘솔로 이동하여 확인하십시오. 설치가 완료되면이 창이 자동으로 닫힙니다!",
                 "today_not_show": "오늘 이 창을 표시하지 않음",
                 "free": "무료",
-                "apply_for_free": "무료 사용 신청"
+                "apply_for_free": "무료 사용 신청",
+                "use_chatgpt_gen_prompts": "ChatGPT를 사용하여 프롬프트를 생성합니다",
+                "input_image_desc": "이미지 설명을 입력하세요. 예 : 건물 꼭대기에 앉아있는 고양이, 매우 고화질이며 매우 현실적인 사진 등",
+                "api_config": "API 구성",
+                "image_desc": "이미지 설명",
+                "preset": "사전 설정",
+                "ai_one": "AI에게 전송 된 첫 번째 문장",
+                "ai_two": "AI에게 전송 된 두 번째 문장",
+                "restore_to_default": "시스템 기본값으로 복원",
+                "generate": "생성",
+                "generate_result": "생성 결과"
             }
         },
         {
@@ -1354,7 +1458,17 @@
                 "packages_installing": "Iniciando a instalação ...... Se você precisar verificar o log de instalação detalhado, vá para o console WebUI para visualizá-lo. Depois que a instalação for concluída, esta janela será fechada automaticamente!",
                 "today_not_show": "Não mostrar esta janela hoje",
                 "free": "Grátis",
-                "apply_for_free": "Solicitar uso gratuito"
+                "apply_for_free": "Solicitar uso gratuito",
+                "use_chatgpt_gen_prompts": "Usar o ChatGPT para Gerar Prompt",
+                "input_image_desc": "Por favor, escreva a descrição da imagem, por exemplo: um gato sentado no topo de um edifício, uma foto muito realista e de alta definição.",
+                "api_config": "Configuração da API",
+                "image_desc": "Descrição da Imagem",
+                "preset": "Predefinição",
+                "ai_one": "Primeira frase enviada para o AI",
+                "ai_two": "Segunda frase enviada para o AI",
+                "restore_to_default": "Restaurar às predefinições do sistema",
+                "generate": "Gerar",
+                "generate_result": "Resultado da Geração"
             }
         },
         {
@@ -1462,7 +1576,17 @@
                 "packages_installing": "Запуск установки ...... Если вам нужно проверить подробный журнал установки, перейдите на консоль WebUI, чтобы просмотреть его. После завершения установки это окно будет автоматически закрыто!",
                 "today_not_show": "Не показывать это окно сегодня",
                 "free": "Бесплатно",
-                "apply_for_free": "Подать заявку на бесплатное использование"
+                "apply_for_free": "Подать заявку на бесплатное использование",
+                "use_chatgpt_gen_prompts": "Использовать ChatGPT для генерации промптов",
+                "input_image_desc": "Введите описание изображения, например: кошка, сидящая на вершине здания, очень высокое разрешение, очень реалистичное фото.",
+                "api_config": "Конфигурация API",
+                "image_desc": "Описание изображения",
+                "preset": "Предустановка",
+                "ai_one": "Первое предложение, отправленное AI",
+                "ai_two": "Второе предложение, отправленное AI",
+                "restore_to_default": "Восстановить настройки по умолчанию системы",
+                "generate": "Генерировать",
+                "generate_result": "Результат генерации"
             }
         },
         {
@@ -1585,7 +1709,17 @@
                 "packages_installing": "Iniciando la instalación...... Si necesita verificar el registro de instalación detallado, vaya a la consola WebUI para verlo. ¡Después de que finalice la instalación, esta ventana se cerrará automáticamente!",
                 "today_not_show": "No mostrar esta ventana hoy",
                 "free": "Gratis",
-                "apply_for_free": "Solicitar uso gratuito"
+                "apply_for_free": "Solicitar uso gratuito",
+                "use_chatgpt_gen_prompts": "Usar ChatGPT para generar Prompts",
+                "input_image_desc": "Ingrese la descripción de la imagen, por ejemplo: un gato sentado en la parte superior de un edificio, una foto muy realista y de alta definición.",
+                "api_config": "Configuración del API",
+                "image_desc": "Descripción de la Imagen",
+                "preset": "Preajuste",
+                "ai_one": "Primera oración enviada a AI",
+                "ai_two": "Segunda oración enviada a AI",
+                "restore_to_default": "Restaurar a los valores predeterminados del sistema",
+                "generate": "Generar",
+                "generate_result": "Generar Resultado"
             }
         },
         {

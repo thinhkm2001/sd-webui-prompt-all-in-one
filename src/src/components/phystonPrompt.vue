@@ -142,6 +142,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="prompt-header-extend" v-if="!neg">
+                    <div class="extend-content">
+                        <div class="extend-btn-group">
+                            <div class="extend-btn-item" v-tooltip="getLang('use_chatgpt_gen_prompts')"
+                                 @click="$emit('click:showChatgpt', $event)">
+                                <icon-svg class="hover-scale-120" name="chatgpt"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="prompt-header-extend prompt-append">
                     <div class="extend-content">
                         <div class="gradio-checkbox hover-scale-120">
@@ -454,7 +464,7 @@ export default {
             default: () => [],
         },
     },
-    emits: ['update:languageCode', 'update:autoTranslate', 'update:autoTranslateToEnglish', 'update:autoTranslateToLocal', 'update:autoRemoveSpace', 'update:autoRemoveLastComma', 'update:autoKeepWeightZero', 'update:hideDefaultInput', 'update:hidePanel', 'update:enableTooltip', 'update:translateApi', 'click:translateApi', 'click:promptFormat', 'click:selectTheme', 'click:selectLanguage', 'click:showHistory', 'click:showFavorite', 'refreshFavorites'],
+    emits: ['update:languageCode', 'update:autoTranslate', 'update:autoTranslateToEnglish', 'update:autoTranslateToLocal', 'update:autoRemoveSpace', 'update:autoRemoveLastComma', 'update:autoKeepWeightZero', 'update:hideDefaultInput', 'update:hidePanel', 'update:enableTooltip', 'update:translateApi', 'click:translateApi', 'click:promptFormat', 'click:selectTheme', 'click:selectLanguage', 'click:showHistory', 'click:showFavorite', 'refreshFavorites', 'click:showChatgpt'],
     data() {
         return {
             prompt: '',
@@ -815,6 +825,14 @@ export default {
         },
         useFavorite(favorite) {
             this.useHistory(favorite)
+        },
+        useChatgpt(prompt) {
+            let tags = common.splitTags(prompt)
+            this.tags = []
+            tags.forEach(tag => {
+                this._appendTag(tag, '', false, -1, 'text')
+            })
+            this.updateTags()
         },
         onPromptMainClick() {
             this.onTextareaChange(true)
