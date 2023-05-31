@@ -9,6 +9,7 @@
                     "name": "[Free] Microsoft Bing, America",
                     "type": "translators",
                     "translator": "bing",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-Hans",
                         "zh_HK": "yue",
@@ -134,10 +135,9 @@
                             "key": "region",
                             "title": "Region",
                             "type": "select",
-                            "default": "EN",
+                            "default": "CN",
                             "options": [
-                                "CN",
-                                "EN"
+                                "CN"
                             ]
                         }
                     ]
@@ -147,6 +147,7 @@
                     "name": "[Free] Google, America",
                     "type": "translators",
                     "translator": "google",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-CN",
                         "zh_HK": "zh-TW",
@@ -256,8 +257,47 @@
                             "type": "select",
                             "default": "EN",
                             "options": [
-                                "CN",
-                                "EN"
+                                "EN",
+                                "JP",
+                                "HK",
+                                "TW",
+                                "SG",
+                                "DE",
+                                "FR",
+                                "KR",
+                                "RU",
+                                "ES",
+                                "PT",
+                                "BR",
+                                "IT",
+                                "NL",
+                                "PL",
+                                "VI",
+                                "AR",
+                                "TR",
+                                "BE",
+                                "FI",
+                                "GR",
+                                "ID",
+                                "RO",
+                                "SK",
+                                "UK",
+                                "TH",
+                                "CZ",
+                                "DK",
+                                "HU",
+                                "NO",
+                                "SV",
+                                "HR",
+                                "LT",
+                                "LV",
+                                "SL",
+                                "SR",
+                                "BG",
+                                "ET",
+                                "HI",
+                                "IW",
+                                "FA"
                             ]
                         }
                     ]
@@ -267,6 +307,7 @@
                     "name": "[Free] iTranslate, Austria",
                     "type": "translators",
                     "translator": "itranslate",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-CN",
                         "zh_HK": "zh-HK",
@@ -363,6 +404,7 @@
                     "name": "[Free] Lingvanex, Cyprus",
                     "type": "translators",
                     "translator": "lingvanex",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-Hans_CN",
                         "zh_HK": "zh-Hant_TW",
@@ -466,6 +508,7 @@
                     "name": "[Free] ModernMt / Translated, Italy",
                     "type": "translators",
                     "translator": "modernMt",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh",
                         "zh_HK": "zh-TW",
@@ -572,6 +615,7 @@
                     "name": "[Free] SysTran, France",
                     "type": "translators",
                     "translator": "sysTran",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-Hans",
                         "zh_HK": "zh-Hant",
@@ -645,6 +689,7 @@
                     "name": "[Free] TranslateCom, America",
                     "type": "translators",
                     "translator": "translateCom",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh",
                         "zh_HK": "zh-TW",
@@ -685,6 +730,7 @@
                     "name": "[Free] Argos / Libre, America",
                     "type": "translators",
                     "translator": "argos",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh",
                         "en_US": "en",
@@ -721,6 +767,7 @@
                     "name": "[Free] Papago / Naver, South Korea",
                     "type": "translators",
                     "translator": "papago",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-CN",
                         "zh_HK": "zh-TW",
@@ -755,6 +802,7 @@
                     "name": "[Free] Reverso, France",
                     "type": "translators",
                     "translator": "reverso",
+                    "concurrent": 999,
                     "support": {
                         "ar_SA": "ar",
                         "cs_CZ": "cs",
@@ -801,6 +849,7 @@
                     "name": "[Free] TranslateMe / Neosus, Lithuania",
                     "type": "translators",
                     "translator": "translateMe",
+                    "concurrent": 999,
                     "support": {
                         "en_US": "English",
                         "en_GB": "English",
@@ -833,6 +882,7 @@
                     "name": "[Free] Elia / Elhuyar, Spain",
                     "type": "translators",
                     "translator": "elia",
+                    "concurrent": 999,
                     "support": {
                         "gl_ES": "gl",
                         "ca_ES": "ca",
@@ -856,6 +906,7 @@
                     "name": "[Free] Judic / CrossLang, Belgium",
                     "type": "translators",
                     "translator": "judic",
+                    "concurrent": 999,
                     "support": {
                         "nl_NL": "nl",
                         "fr_FR": "fr",
@@ -879,6 +930,7 @@
                     "name": "[Free] Alibaba / 阿里翻译, China",
                     "type": "translators",
                     "translator": "alibaba",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh",
                         "zh_HK": "zh-tw",
@@ -991,6 +1043,7 @@
                     "name": "[Free] Baidu / 百度翻译, China",
                     "type": "translators",
                     "translator": "baidu",
+                    "concurrent": 1,
                     "support": {
                         "zh_CN": "zh",
                         "zh_HK": "yue",
@@ -1103,6 +1156,7 @@
                     "name": "[Free] Sogou / 搜狗翻译, China",
                     "type": "translators",
                     "translator": "sogou",
+                    "concurrent": 999,
                     "support": {
                         "ar_SA": "ar",
                         "pl_PL": "pl",
@@ -1143,6 +1197,7 @@
                     "name": "[Free] QQTranSmart / 腾讯交互翻译, China",
                     "type": "translators",
                     "translator": "qqTranSmart",
+                    "concurrent": 999,
                     "support": {
                         "ar_SA": "ar",
                         "de_DE": "de",
@@ -1181,6 +1236,7 @@
                     "name": "[Free] Youdao / 有道翻译, China",
                     "type": "translators",
                     "translator": "youdao",
+                    "concurrent": 1,
                     "support": {
                         "zh_CN": "zh-CHS",
                         "en_US": "en",
@@ -1202,6 +1258,7 @@
                     "name": "[Free] Iciba / 爱词霸, China",
                     "type": "translators",
                     "translator": "iciba",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh",
                         "zh_HK": "cht",
@@ -1316,6 +1373,7 @@
                     "name": "[Free] CloudYi / 深圳云译, China",
                     "type": "translators",
                     "translator": "cloudYi",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh-cn",
                         "zh_TW": "zh-tw",
@@ -1356,6 +1414,7 @@
                     "name": "[Free] Caiyun / 彩云翻译, China",
                     "type": "translators",
                     "translator": "caiyun",
+                    "concurrent": 999,
                     "support": {
                         "zh_CN": "zh",
                         "en_GB": "en",
