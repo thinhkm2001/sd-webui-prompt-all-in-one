@@ -982,7 +982,7 @@ export default {
                             reject(error.message)
                         })
                     } else {
-                        const concurrent = this.translateApiConfig.concurrent || 1 // 并发数
+                        const concurrent = this.translateApiItem.concurrent || 1 // 并发数
                         let tagsCount = tags.length // 需要翻译的标签数
                         let groupCount = Math.ceil(tagsCount / concurrent) // 分组数
                         const trans = (groupNow = 0) => {
